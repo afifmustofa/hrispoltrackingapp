@@ -47,7 +47,6 @@
 <?php include "menu.php"; ?>
 
 <main id="main" class="main">
-
   <div class="pagetitle">
     <h1>HRIS Poltracking Indonesia</h1>
     <nav>
@@ -58,7 +57,45 @@
       </ol>
     </nav>
   </div><!-- End Page Title -->
+  <?php
+if(isset($_POST['simpan'])){
+$kode          = $_POST['kode'];
+$nama           = $_POST['nama'];
+$tanggal_awal  = $_POST['tanggal_awal'];
+$tanggal_akhir = $_POST['tanggal_akhir'];
+$jumlah        = $_POST['jumlah'];
+$jenis_cuti    = $_POST['jenis_cuti'];
+$ket           = $_POST['ket'];
 
+$sql = mysqli_query($koneksi, "SELECT * FROM tb_karyawan WHERE nama='$nama'");
+             if(mysqli_num_rows($sql) == 0){
+				header("Location: inputcuti.php");
+			}else{
+				$row = mysqli_fetch_assoc($sql);
+            }
+            
+$jumlah_cuti = $row['jumlah_cuti'];
+$nama = $row['nama'];
+
+            if ($jumlah_cuti == 0) {
+                echo "<script>alert('cuti $nama sudah habis, tidak bisa membuat cuti!'); window.location = 'inputcuti.php'</script>";
+                  } else if ($jumlah_cuti <= 0) {
+                    echo "<script>alert('cuti $nama sudah habis, tidak bisa membuat cuti!'); window.location = 'inputcuti.php'</script>";
+                      } else {
+
+$query = mysqli_query($koneksi, "INSERT INTO tb_cuti (kode, nama, tanggal_awal, tanggal_akhir, jumlah, jenis_cuti, ket) VALUES ('$kode', '$nama', '$tanggal_awal', '$tanggal_akhir', '$jumlah', '$jenis_cuti', '$ket')");
+
+$qu	   = mysqli_query($koneksi, "UPDATE tb_karyawan SET jumlah_cuti=(jumlah_cuti-'$jumlah') WHERE nama='$nama'");
+if ($query&&$qu){
+    echo "<script>alert('cuti $nama berhasil di buat!'); window.location = 'datacuti.php'</script>";
+	//echo '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Data berhasil disimpan.</div>';
+				}else{
+					echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Data gagal disimpan, silahkan coba lagi.</div>';
+                }
+            }
+}
+
+                ?>
 
   <section class="section">
     <div class="row">
@@ -66,7 +103,7 @@
 
         <div class="card">
           <div class="card-body">
-            <form action="simpan-cuti.php" method="POST" enctype="multipart/form-data">
+            <form action="inputcuti.php" method="POST" enctype="multipart/form-data">
               <h5 class="card-title">Input Data Cuti</h5>
 
               <!-- General Form Elements -->
