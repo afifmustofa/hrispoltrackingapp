@@ -1,0 +1,126 @@
+	  
+ 
+	<h3>Data karyawan Poltracking Indonesia</h3>
+	  
+	<!-- <table>
+	
+			<tr>
+			 <td width="0px">Plant :</td>  <td></td> 
+			 <td width="0px">From : </td>  
+			 <td width="0px">Until : </td> 
+			 
+		 </tr>
+	</table>-->	
+    <table>
+	
+			<tr>
+			
+			 <td width="0px">Tanggal : 26-08-2022</td>  
+			 
+			 
+		 </tr>
+	</table>	
+		 
+		<table bordered="1">  
+			<thead bgcolor="eeeeee" align="center">
+			<tr bgcolor="eeeeee" >
+			<th>No</th>
+			<th>NIK</th>
+	     	<th>Nama</th>
+       		<th>Tanggal Masuk</th>
+       		<th>Divisi</th>
+       		<th>Jabatan</th>
+       		<th>Status Karyawan</th>
+      		<th>Agama</th>
+       		<th>Jenis Kelamin</th>
+       		<th>Tanggal Lahir</th>
+       		<th>Kartu Keluarga</th>
+       		<th>NPWP</th>
+       		<th>Alamat</th>
+       		<th>Domisili</th>
+       		<th>No HP</th>
+       		<th>Email</th>
+       		<th>Status Pernikahan</th>
+       		<th>Kontak Keluarga</th>
+       		<th>Sisa Cuti</th>
+			<th>Level</th>
+			</tr>
+		</thead>
+		<tbody>
+	 	
+					
+		</tbody>
+
+		</div>
+    </div>
+</div>
+   
+		<tr>
+			<td>1</td>
+			<td>1610160210950001</td>
+			<td>Ahmad Al Afif</td>
+			<td>2016-09-01</td>
+            <td>Accounting</td>
+            <td>Direktur</td>
+            <td>TETAP</td>
+			<td>Islam</td>
+			<td>Laki - Laki</td>
+			<td>1995-10-02</td>
+			<td>1610160210950001</td>
+			<td>1610160210950001</td>
+			<td>Depok</td>
+			<td>Depok</td>
+			<td>085380094348</td>
+			<td>afifemail</td>
+			<td>TK-0</td>
+			<td>085380094348</td>
+			<td>10</td>
+			<td>User</td>
+		</tr>
+		
+		<tr>
+			<td>2</td>
+			<td>3423432</td>
+			<td>Superadmin</td>
+			<td>2016-09-01</td>
+            <td>General Affairs</td>
+            <td>Direktur</td>
+            <td>TETAP</td>
+			<td>Islam</td>
+			<td>Laki - Laki</td>
+			<td>1995-10-02</td>
+			<td>2312</td>
+			<td>123123</td>
+			<td>123</td>
+			<td>12312</td>
+			<td>085380094348</td>
+			<td>wewqe</td>
+			<td>K-0</td>
+			<td>weqe</td>
+			<td>10</td>
+			<td>Admin</td>
+		</tr>
+		
+		<tr>
+			<td>3</td>
+			<td>1610160202020001</td>
+			<td>Karyawan Baru</td>
+			<td>2022-08-12</td>
+            <td>Digital</td>
+            <td>Direktur</td>
+            <td>TETAP</td>
+			<td>Islam</td>
+			<td>Laki - Laki</td>
+			<td>2002-02-02</td>
+			<td>1610160202020001</td>
+			<td>1610160202020001</td>
+			<td>Kelapa Dua</td>
+			<td>Kota Depok</td>
+			<td>080808080808</td>
+			<td>email@gmail.com</td>
+			<td>Belum Menikah</td>
+			<td>080808080808</td>
+			<td>10</td>
+			<td>User</td>
+		</tr>
+		  </table>   
