@@ -74,14 +74,13 @@
               $jam_masuk     = $_POST['jam_masuk'];
               $ket           = $_POST['ket'];
               $alasan        = $_POST['alasan'];
-              $status        = $_POST['status'];
             
               if($jenis_gambar=="image/jpeg" || $jenis_gambar=="image/jpg" || $jenis_gambar=="image/gif" || $jenis_gambar=="image/x-png")
         {			
           $gambar = $namafolder . basename($_FILES['nama_file']['name']);		
           if (move_uploaded_file($_FILES['nama_file']['tmp_name'], $gambar)) {
-            $sql="INSERT INTO tb_keterangan (id_keterangan, nama, tanggal, jam_masuk, ket, alasan, gambar, status) VALUES
-                  ('$id_keterangan', '$nama','$tanggal','$jam_masuk','$ket','$alasan', '$gambar', '$status')";
+            $sql="INSERT INTO tb_keterangan (id_keterangan, nama, tanggal, jam_masuk, ket, alasan, gambar) VALUES
+                  ('$id_keterangan', '$nama','$tanggal','$jam_masuk','$ket','$alasan', '$gambar')";
             $res=mysqli_query($koneksi, $sql) or die (mysqli_error());
             //echo "Gambar berhasil dikirim ke direktori".$gambar;
                   echo "<script>alert('Data berhasil dimasukan!'); window.location = 'dataketerangan.php'</script>";	   
