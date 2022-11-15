@@ -5,7 +5,6 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
   <title>HRIS Poltracking Indonesia</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
@@ -28,7 +27,12 @@
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/stylecss.css" rel="stylesheet">
+
+  <!-- Datatable -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
   <!-- =======================================================
   * Template Name: NiceAdmin - v2.3.1
@@ -38,13 +42,13 @@
   ======================================================== -->
 </head>
 
+<body>
   <!-- ======= Header ======= -->
   <?php include "header.php"; ?>
+  <!-- ======= Sidebar ======= -->
+  <?php include "menu.php"; ?>
 
-<!-- ======= Sidebar ======= -->
-<?php include "menu.php"; ?>
-
-<main id="main" class="main">
+  <main id="main" class="main">
 
 <div class="pagetitle">
   <h1>HRIS Poltracking Indonesia</h1>
@@ -57,28 +61,62 @@
   </nav>
 </div><!-- End Page Title -->
 
-
+<?php
+                if(isset($_POST['simpan'])){
+			$namafolder="foto_ket/"; //tempat menyimpan file
+      
+      if (!empty($_FILES["nama_file"]["tmp_name"]))
+      {
+              $jenis_gambar  =$_FILES['nama_file']['type'];
+              $id_keterangan = $_POST['id_keterangan'];
+              $nama          = $_POST['nama'];
+              $tanggal       = $_POST['tanggal'];
+              $jam_masuk     = $_POST['jam_masuk'];
+              $ket           = $_POST['ket'];
+              $alasan        = $_POST['alasan'];
+              $status        = $_POST['status'];
+            
+              if($jenis_gambar=="image/jpeg" || $jenis_gambar=="image/jpg" || $jenis_gambar=="image/gif" || $jenis_gambar=="image/x-png")
+        {			
+          $gambar = $namafolder . basename($_FILES['nama_file']['name']);		
+          if (move_uploaded_file($_FILES['nama_file']['tmp_name'], $gambar)) {
+            $sql="INSERT INTO tb_keterangan (id_keterangan, nama, tanggal, jam_masuk, ket, alasan, gambar, status) VALUES
+                  ('$id_keterangan', '$nama','$tanggal','$jam_masuk','$ket','$alasan', '$gambar', '$status')";
+            $res=mysqli_query($koneksi, $sql) or die (mysqli_error());
+            //echo "Gambar berhasil dikirim ke direktori".$gambar;
+                  echo "<script>alert('Data berhasil dimasukan!'); window.location = 'dataketerangan.php'</script>";	   
+          } else {
+            echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><p>Gambar gagal dikirim</p></div>';
+         }
+        } else {
+         echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Jenis gambar yang anda kirim salah. Harus .jpg .gif .png</div>';
+        }
+     } else {
+       echo '<div class="alert alert-warning alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Anda Belum Memilih Gambar</div>';
+     }
+    }
+			?>
 <section class="section">
       <div class="row">
         <div class="col-lg-10">
 
           <div class="card">
             <div class="card-body">
-            <form action="tambah-keterangan.php" method="POST" enctype="multipart/form-data">
+            <form action="inputketerangan.php" method="POST" enctype="multipart/form-data">
               <h5 class="card-title">Input Data Keterangan</h5>
 
               <!-- General Form Elements -->
               <form>
               <div class="row mb-3">
                   <label for="id_keterangan" class="col-sm-3 col-form-label">Id Keterangan</label>
-                  <div class="col-md-8 col-lg-9">
+                  <div class="col-md-8 col-lg-8">
                     <input name="id_keterangan" id="id_keterangan" type="text" class="form-control" placeholder="Tidak perlu di isi" value="<?php $a="Ket"; $b=rand(1000,10000); $c=$a.$b; echo $c; ?>"autofocus="on" readonly="readonly">
                   </div>
                 </div>
 
                 <div class="row mb-3">
                 <label for="kode" class="col-md-4 col-lg-3 col-form-label">Nama Karyawan</label>
-                 <div class="col-md-8 col-lg-9">
+                 <div class="col-md-8 col-lg-8">
                     <select name="nama" id="nama" class="form-select" aria-label="Default select example">
                               <option value=""> --- Pilih Karyawan --- </option>
                               <?php 
@@ -97,21 +135,21 @@
                 
                 <div class="row mb-3">
                   <label for="inputDate" class="col-md-4 col-lg-3 col-form-label">Tanggal</label>
-                  <div class="col-md-8 col-lg-9">
+                  <div class="col-md-8 col-lg-8">
                     <input type="date" class="form-control" name="tanggal" id="tanggal">
                   </div>
                 </div>
 
                 <div class="row mb-3">
                   <label for="inputTime" class="col-md-4 col-lg-3 col-form-label">Jam</label>
-                  <div class="col-md-8 col-lg-9">
+                  <div class="col-md-8 col-lg-8">
                     <input type="time"  name="jam_masuk" id="jam_masuk" class="form-control">
                   </div>
                 </div>
                 
                 <div class="row mb-3">
                   <label class="col-md-4 col-lg-3 col-form-label">Keterangan</label>
-                  <div class="col-md-8 col-lg-9">
+                  <div class="col-md-8 col-lg-8">
                   <select class="form-select" aria-label="Default select example" name="ket" id="ket" class="form-control" required="required">
                     <option value="">----- Pilih Keterangan -----</option>
                            <?php $ket = $data['ket']; ?>
@@ -125,25 +163,24 @@
     
                 <div class="row mb-3">
                 <label for="alasan" class="col-md-4 col-lg-3 col-form-label">Alasan</label>
-                 <div class="col-md-8 col-lg-9">
+                 <div class="col-md-8 col-lg-8">
                  <input name="alasan" type="text" id="alasan" class="form-control" placeholder="Tulis Alasan" autocomplete="off" required />
                   </div>
                 </div>
 
                 <div class="row mb-3">
-                      <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Gambar</label>
-                      <div class="col-md-8 col-lg-9">
-                        <div class="pt-2">
-                          <input name="nama_file" type="file" id="nama_file" class="btn btn-primary btn-sm" title="Upload new profile image" class="bi bi-upload"></input>
-                          <a class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
-                        </div>
+                    <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Foto</label>
+                    <div class="col-md-4 col-lg-8">
+                      <div class="pt-2">
+                        <input class="form-control" name="nama_file" type="file" id="nama_file" require=""/>
                       </div>
                     </div>
+                  </div> 
                             
                     
-                <div class="row mb-3">
+                <!-- <div class="row mb-3">
                   <label class="col-md-4 col-lg-3 col-form-label">Status</label>
-                  <div class="col-md-8 col-lg-9">
+                  <div class="col-md-8 col-lg-8">
                   <select class="form-select" aria-label="Default select example" name="status" id="status" class="form-control" required="required">
                     <option value="">----- Pilih Status -----</option>
                     <?php $status = $data['status']; ?>
@@ -152,11 +189,11 @@
                     <option <?=($status=='Ditolak')?'selected="selected"':''?>>Ditolak</option>
                     </select>
                     </div>
-                </div>
+                </div> -->
                 
                 <div class="row mb-3">
                   <label class="col-md-4 col-lg-3 col-form-label">Submit</label>
-                  <div class="col-md-8 col-lg-9">
+                  <div class="col-md-8 col-lg-8">
                   <input type="submit" name="simpan" id="simpan" value="Simpan" class="btn btn-sm btn-primary" />&nbsp;
 	              <a href="inputketerangan.php" class="btn btn-sm btn-danger">Batal </a>
                   </div>
