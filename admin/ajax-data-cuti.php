@@ -63,7 +63,7 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     $nestedData[] = $row["tanggal_akhir"];
 	$nestedData[] = $row["jumlah"];
 	$nestedData[] = $row["jenis_cuti"];
-	// $nestedData[] = $row["ket"];
+	$nestedData[] = $row["ket"];
     $nestedData[] = '<td><center>
                      <a href="detail-cuti.php?id='.$row['kode'].'"  data-toggle="tooltip" title="View Detail" class="btn btn-sm btn-success"> <i class="bi bi-search"></i> </a>
                      <a href="edit-cuti.php?id='.$row['kode'].'"  data-toggle="tooltip" title="Edit" class="btn btn-sm btn-primary"> <i class="bi bi-pencil-square"></i> </a>

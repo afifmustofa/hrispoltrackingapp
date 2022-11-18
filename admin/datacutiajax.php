@@ -116,14 +116,13 @@
               <table id="lookup" class="table table-hover">
                 <thead>
                   <tr>
-                  <th>No</th>
                     <th>Kode</th>
                     <th>Nama</th>
                     <th>Tanggal Awal</th>
                     <th>Tanggal Akhir</th>
                     <th>Jumlah</th>
                     <th>Jenis Cuti</th>
-                    <!-- <th>Keterangan</th> -->
+                     <th>Keterangan</th>
                     <th class="text-center"> Action </th>
                   </tr>
                 </thead>
