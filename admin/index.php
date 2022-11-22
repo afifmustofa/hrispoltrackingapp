@@ -315,7 +315,7 @@
                   <h5 class="card-title">Jenis Kelamin Karyawan</h5>
                   <?php include "koneksi.php"; ?>
                   <?php 
-                    $lakilaki       = mysqli_query($koneksi, "SELECT jen_kel FROM tb_karyawan WHERE jen_kel = 'Laki-Laki' ");
+                    $lakilaki       = mysqli_query($koneksi, "SELECT jen_kel FROM tb_karyawan WHERE jen_kel = 'Laki - Laki' ");
                     $perempuan      = mysqli_query($koneksi, "SELECT jen_kel FROM tb_karyawan WHERE jen_kel = 'Perempuan' ");
                   ?>
                 <head>
