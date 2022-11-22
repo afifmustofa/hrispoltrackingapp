@@ -200,6 +200,75 @@
                 </div>
               </div>
             </div><!-- End Recent Sales -->
+            <div class="col-12">
+              <div class="card recent-sales overflow-auto">
+                <div class="card-body">
+                  <h5 class="card-title">Status Karyawan</h5>
+                  <?php include "koneksi.php"; ?>
+                  <?php 
+                    $tetap = mysqli_query($koneksi, "SELECT status FROM tb_karyawan WHERE status = 'TETAP' ");
+                    $pkwt  = mysqli_query($koneksi, "SELECT status FROM tb_karyawan WHERE status = 'PKWT' ");
+                  ?>
+                <head>
+              <script src="assets/vendor/chart.js/chart.min.js"></script>
+                  <style type="text/css">
+                    .container {
+                    width: 70%;
+                    margin: 15px auto;
+                    }
+                  </style>
+                </head>
+                <body>
+                  <div class="container">
+                    <canvas id="chart" ></canvas>
+                  </div>
+                <script>
+                  var ctx = document.getElementById("chart").getContext("2d");
+                  var myChart = new Chart(ctx, {
+                  // tipe chart
+                  type: 'pie',
+                  data: {
+                  labels: ['TETAP', 'PKWT'],
+                  //dataset adalah data yang akan ditampilkan
+                  datasets: [{
+                  label: 'status karyawan',
+                    //hitung jumlah laki-laki dan jumlah perempuan
+                    data: [
+                        <?php echo mysqli_num_rows($tetap); ?>,
+                        <?php echo mysqli_num_rows($pkwt);?>,
+                        ],
+                    //atur background barchartnya
+                    //karena cuma dua, maka 2 saja yang diatur
+                    backgroundColor: [
+                        'rgb(8, 153, 46)',
+                        'rgb(235, 235, 5)'
+                    ],
+
+                    //atur border barchartnya
+                    //karena cuma dua, maka 2 saja yang diatur
+                    borderColor: [
+                      'rgb(8, 153, 46)',
+                      'rgb(235, 235, 5)'
+                        
+                    ],
+                    borderWidth: 1
+                    }]
+                    },
+                    options: {
+                  scales: {
+                  yAxes: [{
+                  ticks: {
+                  beginAtZero: true
+                  }
+                  }]
+                  }
+                  }
+                });
+              </script>
+            </body>
+                </div>
+              </div>
+            </div><!-- End Budget Report -->
           </div>
         </div><!-- End Left side columns -->
 
@@ -237,6 +306,75 @@
                       ?>
                     </tbody>
                   </table>
+                </div>
+              </div>
+            </div><!-- End Budget Report -->
+            <div class="col-12">
+              <div class="card recent-sales overflow-auto">
+                <div class="card-body">
+                  <h5 class="card-title">Jenis Kelamin Karyawan</h5>
+                  <?php include "koneksi.php"; ?>
+                  <?php 
+                    $lakilaki       = mysqli_query($koneksi, "SELECT jen_kel FROM tb_karyawan WHERE jen_kel = 'Laki-Laki' ");
+                    $perempuan      = mysqli_query($koneksi, "SELECT jen_kel FROM tb_karyawan WHERE jen_kel = 'Perempuan' ");
+                  ?>
+                <head>
+              <script src="assets/vendor/chart.js/chart.min.js"></script>
+                  <style type="text/css">
+                    .container {
+                    width: 70%;
+                    margin: 15px auto;
+                    }
+                  </style>
+                </head>
+                <body>
+                  <div class="container">
+                    <canvas id="myChart" ></canvas>
+                  </div>
+                <script>
+                  var ctx = document.getElementById("myChart").getContext("2d");
+                  var myChart = new Chart(ctx, {
+                  // tipe chart
+                  type: 'pie',
+                  data: {
+                  labels: ['Laki-laki', 'Perempuan'],
+                  //dataset adalah data yang akan ditampilkan
+                  datasets: [{
+                  label: 'jumlah jenis kelamin',
+                    //hitung jumlah laki-laki dan jumlah perempuan
+                    data: [
+                        <?php echo mysqli_num_rows($lakilaki); ?>,
+                        <?php echo mysqli_num_rows($perempuan);?>,
+                        ],
+                    //atur background barchartnya
+                    //karena cuma dua, maka 2 saja yang diatur
+                    backgroundColor: [
+                        'rgb(6, 57, 112)',
+                        'rgb(242, 29, 129)'
+                    ],
+
+                    //atur border barchartnya
+                    //karena cuma dua, maka 2 saja yang diatur
+                    borderColor: [
+                        'rgb(6, 57, 112)',
+                        'rgb(242, 29, 129)',
+                        
+                    ],
+                    borderWidth: 1
+                    }]
+                    },
+                    options: {
+                  scales: {
+                  yAxes: [{
+                  ticks: {
+                  beginAtZero: true
+                  }
+                  }]
+                  }
+                  }
+                });
+              </script>
+            </body>
                 </div>
               </div>
             </div><!-- End Budget Report -->
