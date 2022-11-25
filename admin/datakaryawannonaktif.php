@@ -71,11 +71,11 @@
                 <?php
                   if(isset($_GET['aksi']) == 'delete'){
 				          $id = $_GET['id'];
-				          $cek = mysqli_query($koneksi, "SELECT * FROM tb_karyawan WHERE id_karyawan='$id'");
+				          $cek = mysqli_query($koneksi, "SELECT * FROM tb_nonaktif WHERE id_karyawan='$id'");
 				          if(mysqli_num_rows($cek) == 0){
 					        echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> Data tidak ditemukan.</div>';
 				          }else{
-					        $delete = mysqli_query($koneksi, "DELETE FROM tb_karyawan WHERE id_karyawan='$id'");
+					        $delete = mysqli_query($koneksi, "DELETE FROM tb_nonaktif WHERE id_karyawan='$id'");
 					        if($delete){
 						      echo '<div class="alert alert-primary alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> Data berhasil dihapus.</div>';
 					        }else{
@@ -114,7 +114,7 @@
                   <tbody>
                   <?php 
                       $no = 1;
-                      $query = mysqli_query($koneksi,"SELECT * FROM tb_karyawan ORDER BY id_karyawan");
+                      $query = mysqli_query($koneksi,"SELECT * FROM tb_nonaktif ORDER BY id_karyawan");
                       while($row = mysqli_fetch_array($query)){
                   ?>
 

@@ -212,4 +212,5 @@ $sql = mysqli_query($koneksi, "SELECT * FROM tb_karyawan WHERE nama='$nama'");
       </script> -->
 
 </body>
+
 </html>

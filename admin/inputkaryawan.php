@@ -102,7 +102,7 @@
                   <div class="row mb-3">
                     <label for="nik" class="col-md-4 col-lg-3 col-form-label">Tanggal Masuk</label>
                     <div class="col-md-4 col-lg-8">
-                      <input type='date' class="input-group date form-control" data-date="" data-date-format="yyyy-mm-dd" name='tanggal_masuk' id="tanggal_masuk" placeholder='Tanggal Masuk' autocomplete='off' required='required' />
+                      <input type='date' class="input-group date form-control" data-date="" data-date-format="dd-mm-yyyy" name='tanggal_masuk' id="tanggal_masuk" placeholder='Tanggal Masuk' autocomplete='off' required='required' />
                     </div>
                   </div>
 
@@ -182,7 +182,7 @@
                       <select class="form-select" aria-label="Default select example" name="jen_kel" id="jen_kel" class="form-control" required="required">
                         <option value="">----- Pilih Jenis Kelamin -----</option>
                         <?php $jen_kel = $data['jen_kel']; ?>
-                        <option <?=($jen_kel=='Laki - Laki')?'selected="selected"':''?>>Laki - Laki</option>
+                        <option <?=($jen_kel=='Laki-Laki')?'selected="selected"':''?>>Laki-Laki</option>
                         <option <?=($jen_kel=='Perempuan')?'selected="selected"':''?>>Perempuan</option>
                       </select>
                     </div>
@@ -192,6 +192,20 @@
                     <label for="tangal_lahir" class="col-md-4 col-lg-3 col-form-label">Tanggal Lahir</label>
                     <div class="col-md-4 col-lg-8">
                       <input type='date' class="input-group date form-control" data-date="" data-date-format="dd-mm-yyyy" name='tanggal_lahir' id="tanggal_lahir" placeholder='Tanggal Lahir' autocomplete='off' required='required' />
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label class="col-md-4 col-lg-3 col-form-label">Pendidikan</label>
+                    <div class="col-md-4 col-lg-8">
+                      <select class="form-select" aria-label="Default select example" name="pendidikan" id="pendidikan" class="form-control" required="required">
+                        <option value="">----- Pilih Pendidikan -----</option>
+                        <?php $pendidikan = $data['pendidikan']; ?>
+                        <option <?=($pendidikan=='SMA')?'selected="selected"':''?>>SMA</option>
+                        <option <?=($pendidikan=='D3')?'selected="selected"':''?>>D3</option>
+                        <option <?=($pendidikan=='S1')?'selected="selected"':''?>>S1</option>  
+                        <option <?=($pendidikan=='S2')?'selected="selected"':''?>>S2</option>
+                      </select>
                     </div>
                   </div>
 
@@ -285,6 +299,19 @@
                       </select>
                     </div>
                   </div>
+
+                  <div class="row mb-3">
+                  <label for="level" class="col-md-4 col-lg-3 col-form-label">Posisi Karyawan</label>
+                  <div class="col-md-8 col-lg-7">
+                  <select name="posisi" id="posisi" class="form-select" required="required">
+                  <option value="">----- Pilih Posisi Karyawan -----</option>
+                      <?php $posisi = $data['posisi']; ?>
+                        <option <?=($posisi=='Aktif')?'selected="selected"':''?>>Aktif</option>
+                        <option <?=($posisi=='Non - Aktif')?'selected="selected"':''?>>Non - Aktif</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
 
                   <div class="row mb-3">
                     <label class="col-md-4 col-lg-3 col-form-label">Submit</label>

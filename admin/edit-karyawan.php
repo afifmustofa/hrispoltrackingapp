@@ -71,38 +71,40 @@
         $namafolder="foto_karyawan/"; //tempat menyimpan file
         if (!empty($_FILES["nama_file"]["tmp_name"]))
         {
-          $jenis_gambar=$_FILES['nama_file']['type'];
-          $nik           = $_POST['nik'];
-          $nama          = $_POST['nama'];
-          $tanggal_masuk = $_POST['tanggal_masuk'];
-          $divisi        = $_POST['divisi'];
-          $jabatan       = $_POST['jabatan'];
-          $status        = $_POST['status'];
-          $agama         = $_POST['agama'];
-          $jen_kel       = $_POST['jen_kel'];
-          $tanggal_lahir       = $_POST['tanggal_lahir'];
-          $karkel       = $_POST['karkel'];
-          $npwp       = $_POST['npwp'];
-          $alamat       = $_POST['alamat'];
-          $domisili       = $_POST['domisili'];
-          $nohp       = $_POST['nohp'];
-          $email       = $_POST['email'];
-          $statusnikah       = $_POST['statusnikah'];
-          $kontakkeluarga       = $_POST['kontakkeluarga'];
-          $jumlah_cuti   = $_POST['jumlah_cuti'];
-          $username      = $_POST['username'];
-          $password1      = $_POST['password'];
-          $password      = sha1("$password1");
-          $level         = $_POST['level'];
+          $jenis_gambar       = $_FILES['nama_file']['type'];
+          $nik                = $_POST['nik'];
+          $nama               = $_POST['nama'];
+          $tanggal_masuk      = $_POST['tanggal_masuk'];
+          $divisi             = $_POST['divisi'];
+          $jabatan            = $_POST['jabatan'];
+          $status             = $_POST['status'];
+          $agama              = $_POST['agama'];
+          $jen_kel            = $_POST['jen_kel'];
+          $tanggal_lahir      = $_POST['tanggal_lahir'];
+          $pendidikan         = $_POST['pendidikan'];
+          $karkel             = $_POST['karkel'];
+          $npwp               = $_POST['npwp'];
+          $alamat             = $_POST['alamat'];
+          $domisili           = $_POST['domisili'];
+          $nohp               = $_POST['nohp'];
+          $email              = $_POST['email'];
+          $statusnikah        = $_POST['statusnikah'];
+          $kontakkeluarga     = $_POST['kontakkeluarga'];
+          $jumlah_cuti        = $_POST['jumlah_cuti'];
+          $username           = $_POST['username'];
+          $password1          = $_POST['password'];
+          $password           = sha1("$password1");
+          $level              = $_POST['level'];
+          $posisi             = $_POST['posisi'];
 				
 				if($jenis_gambar=="image/jpeg" || $jenis_gambar=="image/jpg" || $jenis_gambar=="image/gif" || $jenis_gambar=="image/x-png")
 	      {			
 		    $gambar = $namafolder . basename($_FILES['nama_file']['name']);		
 		    if (move_uploaded_file($_FILES['nama_file']['tmp_name'], $gambar)) {
-        $sql="UPDATE tb_karyawan SET nik='$nik', nama='$nama', tanggal_masuk='$tanggal_masuk', divisi='$divisi', jabatan='$jabatan', status='$status', agama='$agama', jen_kel='$jen_kel', tanggal_lahir='$tanggal_lahir', karkel='$karkel', npwp='$npwp', alamat='$alamat', domisili='$domisili', nohp='$nohp', email='$email', statusnikah='$statusnikah', kontakkeluarga='$kontakkeluarga', jumlah_cuti='$jumlah_cuti',  username='$username',  password='$password',  level='$level', gambar='$gambar' WHERE id_karyawan='$kd'";
+        $sql="UPDATE tb_karyawan SET nik='$nik', nama='$nama', tanggal_masuk='$tanggal_masuk', divisi='$divisi', jabatan='$jabatan', status='$status', agama='$agama', jen_kel='$jen_kel', tanggal_lahir='$tanggal_lahir', pendidikan='$pendidikan', karkel='$karkel', npwp='$npwp', alamat='$alamat', domisili='$domisili', nohp='$nohp', email='$email', statusnikah='$statusnikah', kontakkeluarga='$kontakkeluarga', jumlah_cuti='$jumlah_cuti',  username='$username',  password='$password',  level='$level', gambar='$gambar', posisi='$posisi' WHERE id_karyawan='$kd'";
 			  $res=mysqli_query($koneksi, $sql) or die (mysqli_error());
 			  //echo "Gambar berhasil dikirim ke direktori".$gambar;
-            echo "<script>alert('Data karyawan berhasil dimasukan!'); window.location = 'datakaryawan.php'</script>";	   
+            echo "<script>alert('Data Berhasil di Ubah'); window.location = 'datakaryawan.php'</script>";	   
           } else {
             echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><p>Gambar gagal dikirim</p></div>';
           }
@@ -123,25 +125,25 @@
               <div class="form-group">
                 <div class="row mb-3">
                   <label for="nik" class="col-md-4 col-lg-3 col-form-label">NIK</label>
-                  <div class="col-md-8 col-lg-7">
+                  <div class="col-md-8 col-lg-5">
                     <input name="nik" type="text" id="nik" class="form-control" placeholder="NIK" value="<?php echo $data['nik']; ?>" autocomplete="off" autofocus="on" required="required" />
                   </div>
                 </div>
                 <div class="row mb-3">
                   <label for="nama" class="col-md-4 col-lg-3 col-form-label">Nama Karyawan</label>
-                  <div class="col-md-8 col-lg-7">
+                  <div class="col-md-8 col-lg-5">
                     <input name="nama" type="text" id="nama" class="form-control" value="<?php echo $data['nama']; ?>" placeholder="Nama Karyawan" autocomplete="off" required />        
                   </div>
                 </div>
                 <div class="row mb-3">
                   <label for="tanggal_masuk" class="col-md-4 col-lg-3 col-form-label">Tanggal Masuk</label>
-                  <div class="col-md-8 col-lg-7">
-                    <input type='text' class="input-group date form-control" value="<?php echo $data['tanggal_masuk']; ?>" data-date="" data-date-format="yyyy-mm-dd" name='tanggal_masuk' id="tanggal_masuk" placeholder='Tanggal Masuk' required />          
+                  <div class="col-md-8 col-lg-5">
+                    <input type='text' class="input-group date form-control" value="<?php echo $data['tanggal_masuk']; ?>" data-date-format="dd-mm-yyyy" name='tanggal_masuk' id="tanggal_masuk" placeholder='Tanggal Masuk' required />          
                   </div>
                 </div>
                 <div class="row mb-3">
                   <label for="divisi" class="col-md-4 col-lg-3 col-form-label">Divisi</label>
-                  <div class="col-md-8 col-lg-7">
+                  <div class="col-md-8 col-lg-5">
                     <select name="divisi" id="divisi" class="form-select" required>
                       <option value="<?php echo $data['divisi']; ?>"> --- Pilih Divisi --- </option>
                         <?php 
@@ -165,7 +167,7 @@
                 </div>
                 <div class="row mb-3">
                   <label for="jabatan" class="col-md-4 col-lg-3 col-form-label">Jabatan</label>
-                  <div class="col-md-8 col-lg-7">
+                  <div class="col-md-8 col-lg-5">
                     <select name="jabatan" id="jabatan" class="form-select" required>
                       <option value="<?php echo $data['jabatan']; ?>"> --- Pilih Jabatan --- </option>
                         <?php 
@@ -189,25 +191,24 @@
                 </div>
                 <div class="row mb-3">
                   <label for="status" class="col-md-4 col-lg-3 col-form-label">Status Karyawan</label>
-                  <div class="col-md-8 col-lg-7">
+                  <div class="col-md-8 col-lg-5">
                     <select name="status" id="status" class="form-select" required="required">
                       <option value="">----- Pilih Status -----</option>
                       <?php $statuskerja = $data['status']; ?>
                       <option <?=($statuskerja=='TETAP')?'selected="selected"':''?>>TETAP</option>
                       <option <?=($statuskerja=='PKWT')?'selected="selected"':''?>>PKWT</option>
-                      <option <?=($statuskerja=='PKWTT')?'selected="selected"':''?>>PKWTT</option>
                     </select>
                   </div>
                 </div>
                 <div class="row mb-3">
                   <label for="jumlah_cuti" class="col-md-4 col-lg-3 col-form-label">Jumlah Cuti</label>
-                  <div class="col-md-8 col-lg-7">
+                  <div class="col-md-8 col-lg-5">
                     <input name="jumlah_cuti" type="number" id="jumlah_cuti" class="form-control" value="<?php echo $data['jumlah_cuti']; ?>" placeholder="Username" autocomplete="off" required />
                   </div>
                 </div>
                 <div class="row mb-3">
                   <label for="agama" class="col-md-4 col-lg-3 col-form-label">Agama</label>
-                  <div class="col-md-8 col-lg-7">
+                  <div class="col-md-8 col-lg-5">
                     <select name="agama" id="agama" class="form-select" required="required">
                       <option value="">----- Pilih Agama -----</option>
                       <?php $agama = $data['agama']; ?>
@@ -222,118 +223,139 @@
                 </div>
                 <div class="row mb-3">
                   <label for="jen_kel" class="col-md-4 col-lg-3 col-form-label">Jenis Kelamin</label>
-                  <div class="col-md-8 col-lg-7">
+                  <div class="col-md-8 col-lg-5">
                     <select name="jen_kel" id="jen_kel" class="form-select" required="required">
                       <option value="">----- Pilih Jenis Kelamin -----</option>
                       <?php $jen_kel = $data['jen_kel']; ?>
-                      <option <?=($jen_kel=='Laki - Laki')?'selected="selected"':''?>>Laki - Laki</option>
+                      <option <?=($jen_kel=='Laki-Laki')?'selected="selected"':''?>>Laki-Laki</option>
                       <option <?=($jen_kel=='Perempuan')?'selected="selected"':''?>>Perempuan</option>
                     </select>
                   </div>
                 </div>
                 <div class="row mb-3">
                   <label for="tanggal_lahir" class="col-md-4 col-lg-3 col-form-label">Tanggal Lahir</label>
-                  <div class="col-md-8 col-lg-7">
+                  <div class="col-md-8 col-lg-5">
                     <input type='text' class="input-group date form-control" data-date="" data-date-format="yyyy-mm-dd" name='tanggal_lahir' id="tanggal_lahir" value="<?php echo $data['tanggal_lahir']; ?>" placeholder='Tanggal Lahir' autocomplete='off' required='required' />
                   </div>
                 </div>
+
+                <div class="row mb-3">
+                    <label class="col-md-4 col-lg-3 col-form-label">Pendidikan</label>
+                    <div class="col-md-4 col-lg-5">
+                      <select class="form-select" aria-label="Default select example" name="pendidikan" id="pendidikan" class="form-control" required="required">
+                        <option value="">----- Pilih Pendidikan -----</option>
+                        <?php $pendidikan = $data['pendidikan']; ?>
+                        <option <?=($pendidikan=='SMA')?'selected="selected"':''?>>SMA</option>
+                        <option <?=($pendidikan=='D3')?'selected="selected"':''?>>D3</option>
+                        <option <?=($pendidikan=='S1')?'selected="selected"':''?>>S1</option>  
+                        <option <?=($pendidikan=='S2')?'selected="selected"':''?>>S2</option>
+                      </select>
+                    </div>
+                  </div>
+
                 <div class="row mb-3">
                   <label for="karkel" class="col-md-4 col-lg-3 col-form-label">No Kartu Keluarga</label>
-                  <div class="col-md-8 col-lg-7">
+                  <div class="col-md-8 col-lg-5">
                     <input name="karkel" type="text" id="karkel" class="form-control" value="<?php echo $data['karkel']; ?>" placeholder="Kartu Keluarga" autocomplete="off" required /> 
                   </div>
                 </div>
                 <div class="row mb-3">
                   <label for="npwp" class="col-md-4 col-lg-3 col-form-label">No NPWP</label>
-                  <div class="col-md-8 col-lg-7">
+                  <div class="col-md-8 col-lg-5">
                     <input name="npwp" type="text" id="npwp" class="form-control" value="<?php echo $data['npwp']; ?>" placeholder="NPWP" autocomplete="off" required />
                   </div>
                 </div>
                 <div class="row mb-3">
                   <label for="alamat" class="col-md-4 col-lg-3 col-form-label">Alamat</label>
-                  <div class="col-md-8 col-lg-7">
+                  <div class="col-md-8 col-lg-5">
                     <input name="alamat" type="text" id="alamat" class="form-control" value="<?php echo $data['alamat']; ?>" placeholder="Alamat" autocomplete="off" required />
                   </div>
                 </div>
                 <div class="row mb-3">
                   <label for="nik" class="col-md-4 col-lg-3 col-form-label">Alamat Domisili</label>
-                  <div class="col-md-8 col-lg-7">
+                  <div class="col-md-8 col-lg-5">
                     <input name="domisili" type="text" id="domisili" class="form-control" value="<?php echo $data['domisili']; ?>" placeholder="Domisili" autocomplete="off" required />
                   </div>
                 </div>
                 <div class="row mb-3">
                   <label for="domisili" class="col-md-4 col-lg-3 col-form-label">No Handphone</label>
-                  <div class="col-md-8 col-lg-7">
+                  <div class="col-md-8 col-lg-5">
                     <input name="nohp" type="text" id="nohp" class="form-control" value="<?php echo $data['nohp']; ?>" placeholder="No HP" autocomplete="off" required />
                   </div>
                 </div>
                 <div class="row mb-3">
                   <label for="email" class="col-md-4 col-lg-3 col-form-label">Email</label>
-                  <div class="col-md-8 col-lg-7">
+                  <div class="col-md-8 col-lg-5">
                     <input name="email" type="text" id="email" class="form-control" value="<?php echo $data['email']; ?>" placeholder="Email" autocomplete="off" required />
                   </div>
                 </div>
                 <div class="row mb-3">
                   <label for="statusnikah" class="col-md-4 col-lg-3 col-form-label">Status Menikah</label>
-                  <div class="col-md-8 col-lg-7">
+                  <div class="col-md-8 col-lg-5">
                     <select name="statusnikah" id="statusnikah" class="form-select" required="required">
                       <option value="">----- Pilih Status Menikah -----</option>
                       <?php $statusnikah = $data['statusnikah']; ?>
-                      <option <?=($statusnikah=='TK-0')?'selected="selected"':''?>>TK-0</option>
-                      <option <?=($statusnikah=='K-0')?'selected="selected"':''?>>K-0</option>
-                      <option <?=($statusnikah=='K-1')?'selected="selected"':''?>>K-1</option>
-                      <option <?=($statusnikah=='K-2')?'selected="selected"':''?>>K-2</option>
-                      <option <?=($statusnikah=='K-3')?'selected="selected"':''?>>K-3</option>
-                    </select>
+                        <option <?=($statusnikah=='Belum Menikah')?'selected="selected"':''?>>Belum Menikah</option>
+                        <option <?=($statusnikah=='Menikah - Belum Punya Anak')?'selected="selected"':''?>>Menikah - Belum Punya Anak</option>
+                        <option <?=($statusnikah=='Menikah - Anak 1')?'selected="selected"':''?>>Menikah - Anak 1</option>
+                        <option <?=($statusnikah=='Menikah - Anak 2')?'selected="selected"':''?>>Menikah - Anak 2</option>
+                        <option <?=($statusnikah=='Menikah - Anak 3')?'selected="selected"':''?>>Menikah - Anak 3</option>
+                      </select>
+                    </div>
                   </div>
-                </div>
+
                 <div class="row mb-3">
                   <label for="kontakkeluarga" class="col-md-4 col-lg-3 col-form-label">Kontak Keluarga</label>
-                  <div class="col-md-8 col-lg-7">
+                  <div class="col-md-8 col-lg-5">
                     <input name="kontakkeluarga" type="text" id="kontakkeluarga" class="form-control" value="<?php echo $data['kontakkeluarga']; ?>" placeholder="Kontak Keluarga" autocomplete="off" required />
                   </div>
                 </div>
                 <div class="row mb-3">
                   <label for="username" class="col-md-4 col-lg-3 col-form-label">Username</label>
-                  <div class="col-md-8 col-lg-7">
+                  <div class="col-md-8 col-lg-5">
                     <input name="username" type="text" id="username" class="form-control" value="<?php echo $data['username']; ?>" placeholder="Username" autocomplete="off" required />          
                   </div>
                 </div>
                 <div class="row mb-3">
                   <label for="password" class="col-md-4 col-lg-3 col-form-label">Password</label>
-                  <div class="col-md-8 col-lg-7">
+                  <div class="col-md-8 col-lg-5">
                     <input name="password" type="text" id="password" class="form-control" value="<?php echo $data['password']; ?>" placeholder="Password" autocomplete="off" required />  
                   </div>
                 </div>
                 <div class="row mb-3">
                   <label for="level" class="col-md-4 col-lg-3 col-form-label">Level Akun</label>
-                  <div class="col-md-8 col-lg-7">
-                    <select name="level" id="level" class="form-select" required="required">
-                      <option value="">----- Pilih Level Akun -----</option>
-                      <?php $level = $data['level']; ?>
-                      <option value="User">User</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <label for="level" class="col-md-4 col-lg-3 col-form-label">Level Akun</label>
-                  <div class="col-md-8 col-lg-7">
+                  <div class="col-md-8 col-lg-5">
                   <select name="level" id="level" class="form-select" required="required">
                   <option value="">----- Pilih Level Akun -----</option>
                       <?php $level = $data['level']; ?>
-                      <option <?=($level=='User')?'selected="selected"':''?>>User</option>
-                    </select>
+                        <option <?=($level=='User')?'selected="selected"':''?>>User</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
                 <div class="row mb-3">
                   <label for="nama_file" class="col-md-4 col-lg-3 col-form-label">Gambar</label>
-                  <div class="col-md-8 col-lg-7">
+                  <div class="col-md-8 col-lg-5">
                     <input name="nama_file" type="file" id="nama_file" class="form-control" placeholder="Password" autocomplete="off" required />                              
                   </div>
                 </div>
+
+                <div class="row mb-3">
+                  <label for="level" class="col-md-4 col-lg-3 col-form-label">Posisi Karyawan</label>
+                  <div class="col-md-8 col-lg-5">
+                  <select name="posisi" id="posisi" class="form-select" required="required">
+                  <option value="">----- Pilih Posisi Karyawan -----</option>
+                      <?php $posisi = $data['posisi']; ?>
+                        <option <?=($posisi=='Aktif')?'selected="selected"':''?>>Aktif</option>
+                        <option <?=($posisi=='Non - Aktif')?'selected="selected"':''?>>Non - Aktif</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
                 <div class="row mb-3">
                   <label for="nama_file" class="col-md-4 col-lg-3 col-form-label">Simpan</label>
-                  <div class="col-md-8 col-lg-7">
+                  <div class="col-md-8 col-lg-5">
                     <input type="submit" name="update" value="Simpan" class="btn btn-sm btn-primary" />&nbsp;
 	                  <a href="datakaryawan.php" class="btn btn-sm btn-danger">Batal </a>
                   </div> 

@@ -66,7 +66,7 @@
             <div class="col-xl-3 col-md-4">
               <div class="card info-card employee-card">
                 <div class="card-body rounded">
-                  <?php $tampil=mysqli_query($koneksi, "select * from tb_karyawan order by id_karyawan desc");
+                  <?php $tampil=mysqli_query($koneksi, "select * from tb_karyawan where posisi = 'Aktif'");
                         $total=mysqli_num_rows($tampil);
                   ?>
                   <h5 class="card-title">Jumlah Karyawan</span></h5>
@@ -154,7 +154,235 @@
                 </div>
               </div>
             </div><!-- End Keterangan Card -->
+          </div>
+        </div>
 
+        <!--columns -->
+        <div class="col-lg-12">
+          <div class="row">
+
+            <!-- Employee Card -->
+            <div class="col-xl-4 col-md-5">
+              <div class="card info-card employee-card">
+                <div class="card-body rounded">
+                <h5 class="card-title">Status Karyawan</h5>
+                  <?php include "koneksi.php"; ?>
+                  <?php 
+                    $tetap = mysqli_query($koneksi, "SELECT status FROM tb_karyawan WHERE status = 'TETAP' ");
+                    $pkwt  = mysqli_query($koneksi, "SELECT status FROM tb_karyawan WHERE status = 'PKWT' ");
+                  ?>
+                <head>
+              <script src="assets/vendor/chart.js/chart.min.js"></script>
+                  <style type="text/css">
+                    .container {
+                    width: 70%;
+                    margin: 15px auto;
+                    }
+                  </style>
+                </head>
+                <body>
+                  <div class="container">
+                    <canvas id="chartstatus" ></canvas>
+                  </div>
+                <script>
+                  var ctx = document.getElementById("chartstatus").getContext("2d");
+                  var chartstatus = new Chart(ctx, {
+                  // tipe chart
+                  type: 'doughnut',
+                  data: {
+                  labels: ['TETAP', 'PKWT'],
+                  //dataset adalah data yang akan ditampilkan
+                  datasets: [{
+                  label: 'status karyawan',
+                    //hitung jumlah laki-laki dan jumlah perempuan
+                    data: [
+                        <?php echo mysqli_num_rows($tetap); ?>,
+                        <?php echo mysqli_num_rows($pkwt);?>,
+                        ],
+                    //atur background barchartnya
+                    //karena cuma dua, maka 2 saja yang diatur
+                    backgroundColor: [
+                        'rgb(8, 153, 46)',
+                        'rgb(235, 235, 5)'
+                    ],
+
+                    //atur border barchartnya
+                    //karena cuma dua, maka 2 saja yang diatur
+                    borderColor: [
+                      'rgb(8, 153, 46)',
+                      'rgb(235, 235, 5)'
+                        
+                    ],
+                    hoverOffset: 4
+                    }]
+                    },
+                    options: {
+                  scales: {
+                  yAxes: [{
+                  ticks: {
+                  beginAtZero: true
+                  }
+                  }]
+                  }
+                  }
+                });
+              </script>
+            </body>
+                </div>
+              </div>
+            </div><!-- End Employee Card -->
+
+            <!-- Presensi Card -->
+            <div class="col-xl-4 col-md-5">
+              <div class="card info-card presensi-card">
+                <div class="card-body">
+                <h5 class="card-title">Jenis Kelamin Karyawan</h5>
+                  <?php include "koneksi.php"; ?>
+                  <?php 
+                    $lakilaki       = mysqli_query($koneksi, "SELECT jen_kel FROM tb_karyawan WHERE jen_kel = 'Laki-Laki' ");
+                    $perempuan      = mysqli_query($koneksi, "SELECT jen_kel FROM tb_karyawan WHERE jen_kel = 'Perempuan' ");
+                  ?>
+                <head>
+              <script src="assets/vendor/chart.js/chart.min.js"></script>
+                  <style type="text/css">
+                    .container {
+                    width: 100%;
+                    margin: 15px auto;
+                    }
+                  </style>
+                </head>
+                <body>
+                  <div class="container">
+                    <canvas id="chartjenkel" ></canvas>
+                  </div>
+                <script>
+                  var ctx = document.getElementById("chartjenkel").getContext("2d");
+                  var chartjenkel = new Chart(ctx, {
+                  // tipe chart
+                  type: 'doughnut',
+                  data: {
+                  labels: ['Pria', 'Wanita'],
+                  //dataset adalah data yang akan ditampilkan
+                  datasets: [{
+                  label: 'jumlah jenis kelamin',
+                    //hitung jumlah laki-laki dan jumlah perempuan
+                    data: [
+                        <?php echo mysqli_num_rows($lakilaki); ?>,
+                        <?php echo mysqli_num_rows($perempuan);?>,
+                        ],
+                    //atur background barchartnya
+                    //karena cuma dua, maka 2 saja yang diatur
+                    backgroundColor: [
+                        'rgb(6, 57, 112)',
+                        'rgb(242, 29, 129)'
+                    ],
+
+                    //atur border barchartnya
+                    //karena cuma dua, maka 2 saja yang diatur
+                    borderColor: [
+                        'rgb(6, 57, 112)',
+                        'rgb(242, 29, 129)',
+                        
+                    ],
+                    borderWidth: 1
+                    }]
+                    },
+                    options: {
+                  scales: {
+                  yAxes: [{
+                  ticks: {
+                  beginAtZero: true
+                  }
+                  }]
+                  }
+                  }
+                });
+              </script>
+            </body>
+                </div>
+              </div>
+            </div><!-- End Presensi Card -->
+
+            <!-- Cuti Card -->
+            <div class="col-xl-4 col-md-5">
+              <div class="card info-card cuti-card">
+                <div class="card-body">
+                <h5 class="card-title">Pendidikan Karyawan</h5>
+                  <?php include "koneksi.php"; ?>
+                  <?php 
+                    $sma       = mysqli_query($koneksi, "SELECT pendidikan FROM tb_karyawan WHERE pendidikan = 'SMA' ");
+                    $d3        = mysqli_query($koneksi, "SELECT pendidikan FROM tb_karyawan WHERE pendidikan = 'D3' ");
+                    $s1        = mysqli_query($koneksi, "SELECT pendidikan FROM tb_karyawan WHERE pendidikan = 'S1' ");
+                    $s2        = mysqli_query($koneksi, "SELECT pendidikan FROM tb_karyawan WHERE pendidikan = 'S2' ");
+                  ?>
+                <head>
+              <script src="assets/vendor/chart.js/chart.min.js"></script>
+                  <style type="text/css">
+                    .container {
+                    width: 100%;
+                    margin: 15px auto;
+                    }
+                  </style>
+                </head>
+                <body>
+                  <div class="container">
+                    <canvas id="chartpend" ></canvas>
+                  </div>
+                <script>
+                  var ctx = document.getElementById("chartpend").getContext("2d");
+                  var chartpend = new Chart(ctx, {
+                  // tipe chart
+                  type: 'doughnut',
+                  data: {
+                  labels: ['SMA', 'D3', 'S1', 'S2'],
+                  //dataset adalah data yang akan ditampilkan
+                  datasets: [{
+                  label: 'pendidikan karyawan',
+                    //hitung jumlah laki-laki dan jumlah perempuan
+                    data: [
+                        <?php echo mysqli_num_rows($sma); ?>,
+                        <?php echo mysqli_num_rows($d3);?>,
+                        <?php echo mysqli_num_rows($s1); ?>,
+                        <?php echo mysqli_num_rows($s2);?>,
+                        ],
+                    //atur background barchartnya
+                    //karena cuma dua, maka 2 saja yang diatur
+                    backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 159, 64)',
+                        'rgb(255, 205, 86)',
+                        'rgb(75, 192, 192)'
+                    ],
+
+                    //atur border barchartnya
+                    //karena cuma dua, maka 2 saja yang diatur
+                    borderColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 159, 64)',
+                        'rgb(255, 205, 86)',
+                        'rgb(75, 192, 192)'
+                        
+                    ],
+                    borderWidth: 1
+                    }]
+                    },
+                    options: {
+                  scales: {
+                  yAxes: [{
+                  ticks: {
+                  beginAtZero: true
+                  }
+                  }]
+                  }
+                  }
+                });
+              </script>
+            </body>
+                </div>
+              </div>
+            </div><!-- End Cuti Card -->
+          </div>
+        </div>
 
           <!-- Left side columns -->
           <div class="col-lg-6">
@@ -200,75 +428,6 @@
                 </div>
               </div>
             </div><!-- End Recent Sales -->
-            <div class="col-12">
-              <div class="card recent-sales overflow-auto">
-                <div class="card-body">
-                  <h5 class="card-title">Status Karyawan</h5>
-                  <?php include "koneksi.php"; ?>
-                  <?php 
-                    $tetap = mysqli_query($koneksi, "SELECT status FROM tb_karyawan WHERE status = 'TETAP' ");
-                    $pkwt  = mysqli_query($koneksi, "SELECT status FROM tb_karyawan WHERE status = 'PKWT' ");
-                  ?>
-                <head>
-              <script src="assets/vendor/chart.js/chart.min.js"></script>
-                  <style type="text/css">
-                    .container {
-                    width: 70%;
-                    margin: 15px auto;
-                    }
-                  </style>
-                </head>
-                <body>
-                  <div class="container">
-                    <canvas id="chart" ></canvas>
-                  </div>
-                <script>
-                  var ctx = document.getElementById("chart").getContext("2d");
-                  var myChart = new Chart(ctx, {
-                  // tipe chart
-                  type: 'pie',
-                  data: {
-                  labels: ['TETAP', 'PKWT'],
-                  //dataset adalah data yang akan ditampilkan
-                  datasets: [{
-                  label: 'status karyawan',
-                    //hitung jumlah laki-laki dan jumlah perempuan
-                    data: [
-                        <?php echo mysqli_num_rows($tetap); ?>,
-                        <?php echo mysqli_num_rows($pkwt);?>,
-                        ],
-                    //atur background barchartnya
-                    //karena cuma dua, maka 2 saja yang diatur
-                    backgroundColor: [
-                        'rgb(8, 153, 46)',
-                        'rgb(235, 235, 5)'
-                    ],
-
-                    //atur border barchartnya
-                    //karena cuma dua, maka 2 saja yang diatur
-                    borderColor: [
-                      'rgb(8, 153, 46)',
-                      'rgb(235, 235, 5)'
-                        
-                    ],
-                    borderWidth: 1
-                    }]
-                    },
-                    options: {
-                  scales: {
-                  yAxes: [{
-                  ticks: {
-                  beginAtZero: true
-                  }
-                  }]
-                  }
-                  }
-                });
-              </script>
-            </body>
-                </div>
-              </div>
-            </div><!-- End Budget Report -->
           </div>
         </div><!-- End Left side columns -->
 
@@ -306,75 +465,6 @@
                       ?>
                     </tbody>
                   </table>
-                </div>
-              </div>
-            </div><!-- End Budget Report -->
-            <div class="col-12">
-              <div class="card recent-sales overflow-auto">
-                <div class="card-body">
-                  <h5 class="card-title">Jenis Kelamin Karyawan</h5>
-                  <?php include "koneksi.php"; ?>
-                  <?php 
-                    $lakilaki       = mysqli_query($koneksi, "SELECT jen_kel FROM tb_karyawan WHERE jen_kel = 'Laki - Laki' ");
-                    $perempuan      = mysqli_query($koneksi, "SELECT jen_kel FROM tb_karyawan WHERE jen_kel = 'Perempuan' ");
-                  ?>
-                <head>
-              <script src="assets/vendor/chart.js/chart.min.js"></script>
-                  <style type="text/css">
-                    .container {
-                    width: 70%;
-                    margin: 15px auto;
-                    }
-                  </style>
-                </head>
-                <body>
-                  <div class="container">
-                    <canvas id="myChart" ></canvas>
-                  </div>
-                <script>
-                  var ctx = document.getElementById("myChart").getContext("2d");
-                  var myChart = new Chart(ctx, {
-                  // tipe chart
-                  type: 'pie',
-                  data: {
-                  labels: ['Laki-laki', 'Perempuan'],
-                  //dataset adalah data yang akan ditampilkan
-                  datasets: [{
-                  label: 'jumlah jenis kelamin',
-                    //hitung jumlah laki-laki dan jumlah perempuan
-                    data: [
-                        <?php echo mysqli_num_rows($lakilaki); ?>,
-                        <?php echo mysqli_num_rows($perempuan);?>,
-                        ],
-                    //atur background barchartnya
-                    //karena cuma dua, maka 2 saja yang diatur
-                    backgroundColor: [
-                        'rgb(6, 57, 112)',
-                        'rgb(242, 29, 129)'
-                    ],
-
-                    //atur border barchartnya
-                    //karena cuma dua, maka 2 saja yang diatur
-                    borderColor: [
-                        'rgb(6, 57, 112)',
-                        'rgb(242, 29, 129)',
-                        
-                    ],
-                    borderWidth: 1
-                    }]
-                    },
-                    options: {
-                  scales: {
-                  yAxes: [{
-                  ticks: {
-                  beginAtZero: true
-                  }
-                  }]
-                  }
-                  }
-                });
-              </script>
-            </body>
                 </div>
               </div>
             </div><!-- End Budget Report -->

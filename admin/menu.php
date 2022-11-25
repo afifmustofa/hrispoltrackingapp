@@ -45,6 +45,19 @@
         </a>
       </li>
       <li>
+
+      <li>
+        <a href="datakeluarga.php">
+          <i class="bi bi-circle-fill"></i><span>Data Keluarga Karyawan</span>
+        </a>
+      </li>
+      <li>
+        <a href="inputkeluarga.php">
+          <i class="bi bi-circle-fill"></i><span>Input Keluarga</span>
+        </a>
+      </li>
+      <li>
+
         <a href="datafile.php">
           <i class="bi bi-circle-fill"></i><span>Data CV</span>
         </a>
@@ -103,8 +116,8 @@
     </a>
     <ul id="cuti-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
       <li>
-        <a href="datacuti.php">
-          <i class="bi bi-circle-fill"></i><span>Cuti</span>
+        <a href="datacutiajax.php">
+          <i class="bi bi-circle-fill"></i><span>Data Cuti</span>
         </a>
       </li>
       <li>

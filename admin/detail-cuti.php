@@ -111,13 +111,13 @@
                   <div class="row">
                     <div class="col-4 col-md-4 label ">Tanggal Mulai Cuti</div>
                     :
-                    <div class="col-6 col-md-4"><?php echo $data['tanggal_awal']; ?></div>
+                    <div class="col-6 col-md-4"><?php echo date('d-m-Y', strtotime ($data['tanggal_awal'])); ?></div>
                   </div>
 
                   <div class="row">
                     <div class="col-4 col-md-4 label ">Tanggal Akhir Cuti</div>
                     :
-                    <div class="col-6 col-md-4"><?php echo $data['tanggal_akhir']; ?></div>
+                    <div class="col-6 col-md-4"><?php echo date('d-m-Y', strtotime ($data['tanggal_akhir'])); ?></div>
                   </div>
 
                   <div class="row">
@@ -141,7 +141,7 @@
                   <div class="row">
                     <div class="col-6 col-md-4 label ">Tanggal Dibuat</div>
                     :
-                    <div class="col-6 col-md-4"><?php echo $data['tanggal']; ?></div>
+                    <div class="col-6 col-md-4"><?php echo date('d-m-Y', strtotime ($data['tanggal'])); ?></div>
                   </div>
 
                   <div class="row">

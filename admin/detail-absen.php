@@ -118,7 +118,7 @@
                   
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label ">Tanggal</div>
-                    <div class="col-lg-9 col-md-8"><?php echo $data['tanggal']; ?></div>
+                    <div class="col-lg-9 col-md-8"><?php echo date('d-m-Y', strtotime ($data['tanggal'])); ?></div>
                   </div>
 
                   <div class="row">

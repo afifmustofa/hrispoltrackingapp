@@ -138,8 +138,8 @@
                     <td><?php echo $no++ ?></td>
                     <td><?php echo $row['kode'] ?></td>
                     <td><?php echo $row['nama'] ?></td>
-                    <td><?php echo $row['tanggal_awal'] ?></td>
-                    <td><?php echo $row['tanggal_akhir'] ?></td>
+                    <td><?php echo date('d-m-Y', strtotime ($row['tanggal_awal'])) ?></td>
+                    <td><?php echo date('d-m-Y', strtotime ($row['tanggal_akhir'])) ?></td>
                     <td><?php echo $row['jumlah'] ?></td>
                     <td><?php echo $row['jenis_cuti']?></td>
                     <td class="text-center">

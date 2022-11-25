@@ -1,6 +1,8 @@
 <?php include "session.php"; ?>
 <?php
 
+include('koneksi.php');
+
 //get id
 $id = $_GET['id'];
 
