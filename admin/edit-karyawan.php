@@ -89,7 +89,6 @@
           $nohp               = $_POST['nohp'];
           $email              = $_POST['email'];
           $statusnikah        = $_POST['statusnikah'];
-          $kontakkeluarga     = $_POST['kontakkeluarga'];
           $jumlah_cuti        = $_POST['jumlah_cuti'];
           $username           = $_POST['username'];
           $password1          = $_POST['password'];
@@ -101,7 +100,7 @@
 	      {			
 		    $gambar = $namafolder . basename($_FILES['nama_file']['name']);		
 		    if (move_uploaded_file($_FILES['nama_file']['tmp_name'], $gambar)) {
-        $sql="UPDATE tb_karyawan SET nik='$nik', nama='$nama', tanggal_masuk='$tanggal_masuk', divisi='$divisi', jabatan='$jabatan', status='$status', agama='$agama', jen_kel='$jen_kel', tanggal_lahir='$tanggal_lahir', pendidikan='$pendidikan', karkel='$karkel', npwp='$npwp', alamat='$alamat', domisili='$domisili', nohp='$nohp', email='$email', statusnikah='$statusnikah', kontakkeluarga='$kontakkeluarga', jumlah_cuti='$jumlah_cuti',  username='$username',  password='$password',  level='$level', gambar='$gambar', posisi='$posisi' WHERE id_karyawan='$kd'";
+        $sql="UPDATE tb_karyawan SET nik='$nik', nama='$nama', tanggal_masuk='$tanggal_masuk', divisi='$divisi', jabatan='$jabatan', status='$status', agama='$agama', jen_kel='$jen_kel', tanggal_lahir='$tanggal_lahir', pendidikan='$pendidikan', karkel='$karkel', npwp='$npwp', alamat='$alamat', domisili='$domisili', nohp='$nohp', email='$email', statusnikah='$statusnikah', jumlah_cuti='$jumlah_cuti',  username='$username',  password='$password',  level='$level', gambar='$gambar', posisi='$posisi' WHERE id_karyawan='$kd'";
 			  $res=mysqli_query($koneksi, $sql) or die (mysqli_error());
 			  //echo "Gambar berhasil dikirim ke direktori".$gambar;
             echo "<script>alert('Data Berhasil di Ubah'); window.location = 'datakaryawan.php'</script>";	   
@@ -203,7 +202,7 @@
                 <div class="row mb-3">
                   <label for="jumlah_cuti" class="col-md-4 col-lg-3 col-form-label">Jumlah Cuti</label>
                   <div class="col-md-8 col-lg-5">
-                    <input name="jumlah_cuti" type="number" id="jumlah_cuti" class="form-control" value="<?php echo $data['jumlah_cuti']; ?>" placeholder="Username" autocomplete="off" required />
+                    <input name="jumlah_cuti" type="number" id="jumlah_cuti" class="form-control" value="<?php echo $data['jumlah_cuti']; ?>" placeholder="Jumlah Cuti" autocomplete="off" required />
                   </div>
                 </div>
                 <div class="row mb-3">
@@ -305,34 +304,30 @@
                   </div>
 
                 <div class="row mb-3">
-                  <label for="kontakkeluarga" class="col-md-4 col-lg-3 col-form-label">Kontak Keluarga</label>
-                  <div class="col-md-8 col-lg-5">
-                    <input name="kontakkeluarga" type="text" id="kontakkeluarga" class="form-control" value="<?php echo $data['kontakkeluarga']; ?>" placeholder="Kontak Keluarga" autocomplete="off" required />
-                  </div>
-                </div>
-                <div class="row mb-3">
                   <label for="username" class="col-md-4 col-lg-3 col-form-label">Username</label>
                   <div class="col-md-8 col-lg-5">
                     <input name="username" type="text" id="username" class="form-control" value="<?php echo $data['username']; ?>" placeholder="Username" autocomplete="off" required />          
                   </div>
                 </div>
+
                 <div class="row mb-3">
                   <label for="password" class="col-md-4 col-lg-3 col-form-label">Password</label>
                   <div class="col-md-8 col-lg-5">
                     <input name="password" type="text" id="password" class="form-control" value="<?php echo $data['password']; ?>" placeholder="Password" autocomplete="off" required />  
                   </div>
                 </div>
+
                 <div class="row mb-3">
                   <label for="level" class="col-md-4 col-lg-3 col-form-label">Level Akun</label>
                   <div class="col-md-8 col-lg-5">
-                  <select name="level" id="level" class="form-select" required="required">
-                  <option value="">----- Pilih Level Akun -----</option>
-                      <?php $level = $data['level']; ?>
-                        <option <?=($level=='User')?'selected="selected"':''?>>User</option>
-                      </select>
-                    </div>
+                    <select name="level" id="level" class="form-select" required="required">
+                      <option value="">----- Pilih Level Akun -----</option>
+                        <?php $level = $data['level']; ?>
+                          <option <?=($level=='User')?'selected="selected"':''?>>User</option>
+                     </select>
                   </div>
                 </div>
+
                 <div class="row mb-3">
                   <label for="nama_file" class="col-md-4 col-lg-3 col-form-label">Gambar</label>
                   <div class="col-md-8 col-lg-5">
@@ -343,13 +338,12 @@
                 <div class="row mb-3">
                   <label for="level" class="col-md-4 col-lg-3 col-form-label">Posisi Karyawan</label>
                   <div class="col-md-8 col-lg-5">
-                  <select name="posisi" id="posisi" class="form-select" required="required">
-                  <option value="">----- Pilih Posisi Karyawan -----</option>
+                    <select name="posisi" id="posisi" class="form-select" required="required">
+                      <option value="">----- Pilih Posisi Karyawan -----</option>
                       <?php $posisi = $data['posisi']; ?>
-                        <option <?=($posisi=='Aktif')?'selected="selected"':''?>>Aktif</option>
-                        <option <?=($posisi=='Non - Aktif')?'selected="selected"':''?>>Non - Aktif</option>
-                      </select>
-                    </div>
+                      <option <?=($posisi=='Aktif')?'selected="selected"':''?>>Aktif</option>
+                      <option <?=($posisi=='Non - Aktif')?'selected="selected"':''?>>Non - Aktif</option>
+                    </select>
                   </div>
                 </div>
 

@@ -69,12 +69,7 @@
               <img src="<?php echo $data['gambar'] ?>" alt="Profile" class="rounded-circle">
               <h2><?php echo $data['nama']?></h2>
               <h3><?php echo $data['jabatan']; ?> <?php echo $data['divisi']; ?></h3>
-              <div class="social-links mt-2">
-                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-            </div>
+
           </div>
         </div>
       </div>
@@ -95,11 +90,7 @@
             </li>
 
             <li class="nav-item">
-              <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Settings</button>
-            </li>
-
-            <li class="nav-item">
-              <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change Password</button>
+              <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-file">Daftar File</button>
             </li>
 
           </ul>
@@ -206,11 +197,6 @@
                   </div>
 
                   <div class="row">
-                    <div class="col-lg-3 col-md-4 label ">Kontak Keluarga</div>
-                    <div class="col-lg-9 col-md-8"><?php echo $data['kontakkeluarga']; ?></div>
-                  </div>
-
-                  <div class="row">
                     <div class="col-lg-3 col-md-4 label ">Username</div>
                     <div class="col-lg-9 col-md-8"><?php echo $data['username']; ?></div>
                   </div>
@@ -277,6 +263,36 @@
                       <div class="col-lg-3 col-md-4 label ">Anak Ke 4</div>
                       <div class="col-lg-9 col-md-8"><?php echo $data['anak4']; ?></div>
                     </div>
+                    
+                </div>
+                <div class="tab-pane fade profile-file pt-3" id="profile-file">
+                <?php
+                $query = mysqli_query($koneksi, "SELECT * FROM tb_file WHERE id_karyawan='$_GET[id]'");
+                $data  = mysqli_fetch_array($query);
+              ?>
+                  <h5 class="card-title">Profile Details</h5>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label ">Id Karyawan</div>
+                    <div class="col-lg-9 col-md-8"> <?php echo $data['id_file']?></div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label ">Nama</div>
+                    <div class="col-lg-9 col-md-8"> <?php echo $data['nama']?></div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label ">Jenis File</div>
+                    <div class="col-lg-9 col-md-8"> <?php echo $data['jenis']?></div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label ">Download</div>
+                    <div class="col-lg-9 col-md-8">                             
+                      <a href="downloadpdf.php?url=<?php echo $row['berkas'] ?>" data-toggle="tooltip" title="download file" class="btn btn-sm btn-success"> <i class="bi bi-download"></i> </a>
+                    </div>
+                  </div>
                     
                 </div>
               </div><!-- End Bordered Tabs -->

@@ -74,12 +74,13 @@
               <h5 class="card-title">Data CV Karyawan</h5>
               <div class="box-body">
                 <table class="table" id="tabel-data">
-                <button onclick="document.location='uploadfilepdf.php'" class="btn btn-sm btn-success"><i class="fa fa-file"></i>Tambah Data</button>
+                <button onclick="document.location='inputcv.php'" class="btn btn-sm btn-success"><i class="fa fa-file"></i>Tambah Data</button>
                   <thead>
             <tr>
                 <th scope="col">No</th>
                 <th scope="col">Id</th>
                 <th scope="col">Nama</th>
+                <th scope="col">Jenis File</th>
                 <th scope="col">Type</th>
                 <th scope="col">Ukuran</th>
                 <th scope="col">Aksi</th>
@@ -105,13 +106,14 @@
             ?>
                         <tr>
                             <td><?php echo $nomor_urut; ?></td>
-                            <td><?php echo $row['id_file']; ?></td>
+                            <td><?php echo $row['id_karyawan']; ?></td>
                             <td><?php echo $row['nama']; ?></td>
+                            <td><?php echo $row['jenis']; ?></td>
                             <td><?php echo strtoupper($row['ekstensi']) ?></td>
                             <td><?php echo number_format($row['size']/(1024*1024), 2) ?>MB</td>
                             <td>
                             <a href="downloadpdf.php?url=<?php echo $row['berkas'] ?>" data-toggle="tooltip" title="download file" class="btn btn-sm btn-success"> <i class="bi bi-download"></i> </a>
-                            <a href="hapusfilepdf.php?id=<?php echo $row['id_file'] ?>" onclick="return confirm(\'Anda yakin akan menghapus data?/')" class="btn btn-sm btn-danger"> <i class="bi bi-trash"></i>
+                            <a href="hapusfilepdf.php?id=<?php echo $row['id_karyawan'] ?>" onclick="return confirm(\'Anda yakin akan menghapus data?/')" class="btn btn-sm btn-danger"> <i class="bi bi-trash"></i>
                             </td>
                         </tr>
             <?php 

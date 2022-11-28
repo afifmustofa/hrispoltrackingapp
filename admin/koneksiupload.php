@@ -21,7 +21,7 @@ function selectalldata() {
 }
 
 function insertData($data) {
-    $query = "INSERT INTO tb_file VALUES ('".$data['id_file']. "','" . $data['nama'] . "','" . $data['title'] . "','" . $data['size'] . "','" . $data['ekstensi'] . "','" . $data['berkas'] . "') ";
+    $query = "INSERT INTO tb_file VALUES ('".$data['id_file']. "', '".$data['id_karyawan']. "','" . $data['nama'] . "','" . $data['jenis'] . "','" . $data['title'] . "','" . $data['size'] . "','" . $data['ekstensi'] . "','" . $data['berkas'] . "') ";
 
     $result = mysqli_query(koneksiDB(), $query);
 

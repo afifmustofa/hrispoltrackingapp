@@ -59,12 +59,12 @@
       <li>
 
         <a href="datafile.php">
-          <i class="bi bi-circle-fill"></i><span>Data CV</span>
+          <i class="bi bi-circle-fill"></i><span>Data File Karyawan</span>
         </a>
       </li>
       <li>
-        <a href="uploadfilepdf.php">
-          <i class="bi bi-circle-fill"></i><span>Input CV</span>
+        <a href="inputcv.php">
+          <i class="bi bi-circle-fill"></i><span>Input File</span>
         </a>
       </li>
       <li>

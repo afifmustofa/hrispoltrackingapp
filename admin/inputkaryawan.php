@@ -71,7 +71,7 @@
                 <!-- General Form Elements -->
                   <div class="row mb-3">
                     <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
-                    <div class="col-md-4 col-lg-8">
+                    <div class="col-md-4 col-lg-7">
                       <div class="pt-2">
                         <input class="form-control" name="nama_file" type="file" id="nama_file" require=""/>
                       </div>
@@ -80,35 +80,35 @@
 
                   <div class="row mb-3">
                     <label for="id_karyawan" class="col-sm-3 col-form-label">Id Karyawan</label>
-                    <div class="col-md-4 col-lg-8">
+                    <div class="col-md-4 col-lg-7">
                       <input name="id_karyawan" id="id_karyawan" type="text" class="form-control" placeholder="Tidak perlu di isi" value="<?php $a="K"; $b=rand(1000,10000); $c=$a.$b; echo $c; ?>"autofocus="on" readonly="readonly">
                     </div>
                   </div>
                     
                   <div class="row mb-3">
                     <label for="nik" class="col-md-4 col-lg-3 col-form-label">NIK</label>
-                    <div class="col-md-4 col-lg-8">
+                    <div class="col-md-4 col-lg-7">
                       <input name="nik" type="text" id="nik" class="form-control" placeholder="NIK" autocomplete="off" autofocus="on" required="required" />
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <label for="about" class="col-md-4 col-lg-3 col-form-label">Nama</label>
-                    <div class="col-md-4 col-lg-8">
+                    <div class="col-md-4 col-lg-7">
                       <input name="nama" type="text" id="nama" class="form-control" placeholder="Nama Karyawan" autocomplete="off" required />
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <label for="nik" class="col-md-4 col-lg-3 col-form-label">Tanggal Masuk</label>
-                    <div class="col-md-4 col-lg-8">
+                    <div class="col-md-4 col-lg-7">
                       <input type='date' class="input-group date form-control" data-date="" data-date-format="dd-mm-yyyy" name='tanggal_masuk' id="tanggal_masuk" placeholder='Tanggal Masuk' autocomplete='off' required='required' />
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <label class="col-md-4 col-lg-3 col-form-label">Jabatan</label>
-                    <div class="col-md-4 col-lg-8">
+                    <div class="col-md-4 col-lg-7">
                       <select class="form-select" aria-label="Default select example" name="jabatan" id="jabatan" class="form-control" required="required">
                         <option value="">----- Pilih Jabatan -----</option>
                           <?php 
@@ -125,7 +125,7 @@
 
                   <div class="row mb-3">
                     <label class="col-md-4 col-lg-3 col-form-label">Divisi</label>
-                    <div class="col-md-4 col-lg-8">
+                    <div class="col-md-4 col-lg-7">
                       <select class="form-select" aria-label="Default select example" name="divisi" id="divisi" class="form-control" required="required">
                         <option value="">----- Pilih Divisi -----</option>
                           <?php 
@@ -142,27 +142,26 @@
 
                   <div class="row mb-3">
                     <label class="col-md-4 col-lg-3 col-form-label">Status Karyawan</label>
-                    <div class="col-md-4 col-lg-8">
+                    <div class="col-md-4 col-lg-7">
                       <select class="form-select" aria-label="Default select example" name="status" id="status" required="required">
                         <option value="">----- Pilih Status -----</option>
                         <?php $statuskerja = $data['status']; ?>
                         <option <?=($statuskerja=='TETAP')?'selected="selected"':''?>>TETAP</option>
                         <option <?=($statuskerja=='PKWT')?'selected="selected"':''?>>PKWT</option>
-                        <option <?=($statuskerja=='PKWTT')?'selected="selected"':''?>>PKWTT</option>
                       </select>
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <label for="Jabatan" class="col-md-4 col-lg-3 col-form-label">Jumlah Cuti</label>
-                    <div class="col-md-4 col-lg-8">
-                      <input type="number" name="jumlah_cuti" id="jumlah_cuti" class="form-control" required="required">
+                    <div class="col-md-4 col-lg-7">
+                      <input type="number" name="jumlah_cuti" id="jumlah_cuti" placeholder="Jumlah Cuti" class="form-control" required="required">
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <label class="col-md-4 col-lg-3 col-form-label">Agama</label>
-                    <div class="col-md-4 col-lg-8">
+                    <div class="col-md-4 col-lg-7">
                       <select class="form-select" aria-label="Default select example" name="agama" id="agama" class="form-control" required="required">
                         <option value="">----- Pilih Agama -----</option>
                         <?php $agama = $data['agama']; ?>
@@ -178,7 +177,7 @@
 
                   <div class="row mb-3">
                     <label class="col-md-4 col-lg-3 col-form-label">Jenis Kelamin</label>
-                    <div class="col-md-4 col-lg-8">
+                    <div class="col-md-4 col-lg-7">
                       <select class="form-select" aria-label="Default select example" name="jen_kel" id="jen_kel" class="form-control" required="required">
                         <option value="">----- Pilih Jenis Kelamin -----</option>
                         <?php $jen_kel = $data['jen_kel']; ?>
@@ -190,14 +189,14 @@
 
                   <div class="row mb-3">
                     <label for="tangal_lahir" class="col-md-4 col-lg-3 col-form-label">Tanggal Lahir</label>
-                    <div class="col-md-4 col-lg-8">
+                    <div class="col-md-4 col-lg-7">
                       <input type='date' class="input-group date form-control" data-date="" data-date-format="dd-mm-yyyy" name='tanggal_lahir' id="tanggal_lahir" placeholder='Tanggal Lahir' autocomplete='off' required='required' />
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <label class="col-md-4 col-lg-3 col-form-label">Pendidikan</label>
-                    <div class="col-md-4 col-lg-8">
+                    <div class="col-md-4 col-lg-7">
                       <select class="form-select" aria-label="Default select example" name="pendidikan" id="pendidikan" class="form-control" required="required">
                         <option value="">----- Pilih Pendidikan -----</option>
                         <?php $pendidikan = $data['pendidikan']; ?>
@@ -211,49 +210,49 @@
 
                   <div class="row mb-3">
                     <label for="karkel" class="col-md-4 col-lg-3 col-form-label">Kartu Keluarga</label>
-                    <div class="col-md-4 col-lg-8">
+                    <div class="col-md-4 col-lg-7">
                       <input name="karkel" type="text" id="karkel" class="form-control" placeholder="Kartu Keluarga" autocomplete="off" required />
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <label for="npwp" class="col-md-4 col-lg-3 col-form-label">NPWP</label>
-                    <div class="col-md-4 col-lg-8">
+                    <div class="col-md-4 col-lg-7">
                       <input name="npwp" type="text" id="npwp" class="form-control" placeholder="NPWP" autocomplete="off" required />
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <label for="npwp" class="col-md-4 col-lg-3 col-form-label">Alamat</label>
-                    <div class="col-md-4 col-lg-8">
+                    <div class="col-md-4 col-lg-7">
                       <input name="alamat" type="text" id="alamat" class="form-control" placeholder="Alamat" autocomplete="off" required />
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <label for="Address" class="col-md-4 col-lg-3 col-form-label">Domisili</label>
-                    <div class="col-md-4 col-lg-8">
+                    <div class="col-md-4 col-lg-7">
                       <input name="domisili" type="text" id="domisili" class="form-control" placeholder="Domisili" autocomplete="off" required />
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <label for="Phone" class="col-md-4 col-lg-3 col-form-label">No Handphone</label>
-                    <div class="col-md-4 col-lg-8">
+                    <div class="col-md-4 col-lg-7">
                       <input name="nohp" type="number" id="nohp" class="form-control" placeholder="No HP" autocomplete="off" required />
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
-                    <div class="col-md-4 col-lg-8">
+                    <div class="col-md-4 col-lg-7">
                       <input name="email" type="text" id="email" class="form-control" placeholder="Email" autocomplete="off" required />
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <label class="col-md-4 col-lg-3 col-form-label">Status Menikah</label>
-                    <div class="col-md-4 col-lg-8">
+                    <div class="col-md-4 col-lg-7">
                       <select class="form-select" aria-label="Default select example" name="statusnikah" id="statusnikah" class="form-control" required="required">
                         <option value="">----- Pilih Status Menikah -----</option>
                         <?php $statusnikah = $data['statusnikah']; ?>
@@ -267,34 +266,25 @@
                   </div>
 
                   <div class="row mb-3">
-                    <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Kontak Keluarga</label>
-                    <div class="col-md-4 col-lg-8">
-                      <input name="kontakkeluarga" type="text" id="kontakkeluarga" class="form-control" placeholder="Kontak Keluarga" autocomplete="off" required />                  
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
                     <label for="username" class="col-md-4 col-lg-3 col-form-label">Username</label>
-                    <div class="col-md-4 col-lg-8">
+                    <div class="col-md-4 col-lg-7">
                       <input name="username" type="text" id="username" class="form-control" placeholder="Username" autocomplete="off" required />
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <label for="Password" class="col-md-4 col-lg-3 col-form-label">Password</label>
-                    <div class="col-md-4 col-lg-8">
+                    <div class="col-md-4 col-lg-7">
                       <input name="password" type="text" id="password" class="form-control" placeholder="Password" autocomplete="off" required />
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <label class="col-md-4 col-lg-3 col-form-label">Level Akun</label>
-                    <div class="col-md-4 col-lg-8">
+                    <div class="col-md-4 col-lg-7">
                       <select class="form-select" aria-label="Default select example" name="level" id="level" class="form-control" required="required">
                         <option value="">----- Pilih Level Akun -----</option>
                         <?php $level = $data['level']; ?>
-                        <option <?=($level=='Admin')?'selected="selected"':''?>>Admin</option>
-                        <option <?=($level=='Superuser')?'selected="selected"':''?>>Superuser</option>
                         <option <?=($level=='User')?'selected="selected"':''?>>User</option>
                       </select>
                     </div>
@@ -311,11 +301,10 @@
                       </select>
                     </div>
                   </div>
-                </div>
 
-                  <div class="row mb-3">
-                    <label class="col-md-4 col-lg-3 col-form-label">Submit</label>
-                    <div class="col-md-4 col-lg-8">
+                <div class="row mb-3">
+                  <label for="submit" class="col-md-4 col-lg-3 col-form-label">Submit</label>
+                  <div class="col-md-8 col-lg-7">
                       <input type="submit" name="input" value="Simpan"  id="input" class="btn btn-sm btn-primary" />&nbsp;
 	                    <a href="inputkaryawan.php" class="btn btn-sm btn-danger">Batal </a>
                     </div>

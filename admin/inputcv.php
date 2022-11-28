@@ -1,10 +1,10 @@
 <?php include "session.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
   <title>HRIS Poltracking Indonesia</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
@@ -31,7 +31,7 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/stylecss.css" rel="stylesheet">
 
-  <!-- Datatable -->
+  <!-- datatable -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
@@ -45,75 +45,112 @@
 </head>
 
 <body>
+
   <!-- ======= Header ======= -->
   <?php include "header.php"; ?>
+
   <!-- ======= Sidebar ======= -->
   <?php include "menu.php"; ?>
 
   <main id="main" class="main">
 
-    <div class="pagetitle">
-      <h1>HRIS Poltracking Indonesia</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-          <li class="breadcrumb-item">Karyawan</li>
-          <li class="breadcrumb-item active">Data Karyawan</li>
-        </ol>
-      </nav>
-    </div><!-- End Page Title -->
-    
-    <section class="section">
+<div class="pagetitle">
+  <h1>HRIS Poltracking Indonesia</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+      <li class="breadcrumb-item">Karyawan</li>
+      <li class="breadcrumb-item active">Data CV Karyawan</li>
+    </ol>
+  </nav>
+</div><!-- End Page Title -->
+
+
+<section class="section">
       <div class="row">
         <div class="col-lg-10">
+
           <div class="card">
             <div class="card-body">
-              <form action="upload.php" method="POST" enctype="multipart/form-data">                 
-                <div class="row mb-3">
-                    <label for="id_file" class="col-sm-3 col-form-label">Id File</label>
-                    <div class="col-md-8 col-lg-9">
-                    <input name="id_file" type="text" id="id_file" class="form-control" placeholder="Tidak perlu di isi" value="<?php $a="f"; $b=rand(1000,10000); $c=$a.$b; echo $c; ?>" autofocus="on" readonly="readonly" />
-                    </div>
+            <form action="scriptfileupload.php" method="POST" enctype="multipart/form-data">
+              <h5 class="card-title">Input Data CV Karyawan</h5>
+
+              <!-- General Form Elements -->
+              <form>
+              <div class="row mb-3">
+                  <label for="id_file" class="col-sm-3 col-form-label">Id File</label>
+                  <div class="col-md-8 col-lg-7">
+                    <input name="id_file" id="id_file" type="text" class="form-control" placeholder="Tidak perlu di isi" value="<?php $a="file"; $b=rand(1000,10000); $c=$a.$b; echo $c; ?>"autofocus="on" readonly="readonly">
+                  </div>
                 </div>
+
                 <div class="row mb-3">
-                <label for="kode" class="col-md-4 col-lg-3 col-form-label">Nama Karyawan</label>
-                 <div class="col-md-8 col-lg-9">
-                    <select name="nama" id="nama" class="form-select" aria-label="Default select example">
-                              <option value=""> --- Pilih Karyawan --- </option>
-                              <?php 
-                    $query2="select * from tb_karyawan order by nama";
+                <label for="id_karyawan" class="col-md-4 col-lg-3 col-form-label">Nama Karyawan</label>
+                 <div class="col-md-8 col-lg-7">
+                    <select name="id_karyawan" id="id_karyawan" class="form-select" aria-label="Default select example">
+                    <option value=""> --- Pilih Karyawan --- </option>
+                    <?php 
+                    $query2="select * from tb_karyawan order by id_karyawan";
                     $tampil=mysqli_query($koneksi, $query2) or die(mysqli_error());
                     while($data1=mysqli_fetch_array($tampil))
                     {
                     ?>
-                              
-							      <option value="<?php echo $data1['nama'];?>"><?php echo $data1['id_karyawan'];?> - <?php echo $data1['nama'];?></option>
-						    <?php } ?>
-                              
+					<option value="<?php echo $data1['id_karyawan'];?>"><?php echo $data1['id_karyawan'];?> - <?php echo $data1['nama'];?></option>
+					<?php } ?>  
                     </select> 
                   </div>
                 </div>
+
                 <div class="row mb-3">
-                    <label for="id_file" class="col-sm-3 col-form-label">File Upload</label>
-                    <div class="col-md-8 col-lg-9">
-                  <input type="file" name="nama_file" id="nama_file" class="form-control" />
+                  <label for="nama" class="col-md-4 col-lg-3 col-form-label">Nama File</label>
+                  <div class="col-md-8 col-lg-7">
+                    <input type="text" name="nama" id="nama" placeholder="Nama File" class="form-control">
+                  </div>
                 </div>
-                <div class="form-group">
-                  <input type="submit" name="upload" id="upload" value="Upload" class="btn btn-info mt-3" />
+
+                <div class="row mb-3">
+                    <label class="col-md-4 col-lg-3 col-form-label">Jenis File</label>
+                    <div class="col-md-8 col-lg-7">
+                      <select class="form-select" aria-label="Default select example" name="jenis" id="jenis" class="form-control" required="required">
+                        <option value="">----- Pilih Jenis File -----</option>
+                        <?php $jenis = $data['jenis']; ?>
+                        <option <?=($jenis=='CV')?'selected="selected"':''?>>CV</option>
+                        <option <?=($jenis=='Ijazah')?'selected="selected"':''?>>Ijazah</option>
+                        <option <?=($jenis=='KTP')?'selected="selected"':''?>>KTP</option>
+                      </select>
+                    </div>
+                  </div>
+                
+                <div class="row mb-3">
+                  <label for="berkas" class="col-md-4 col-lg-3 col-form-label">File CV</label>
+                  <div class="col-md-8 col-lg-7">
+                  <input type="file" name="berkas" accept="application/pdf">
+                  </div>
                 </div>
-              </form>
+
+                <div class="row mb-3">
+                  <label class="col-md-4 col-lg-3 col-form-label">Submit</label>
+                  <div class="col-md-8 col-lg-7">
+                  <input type="submit" name="simpan" id="simpan" value="Simpan" class="btn btn-sm btn-primary" />&nbsp;
+	              <a href="uploadfilepdf.php" class="btn btn-sm btn-danger">Batal </a>
+                  </div>
+                </div>
+
+
+              </form><!-- End General Form Elements -->
+
             </div>
           </div>
         </div>
       </div>
     </section>
+
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <?php include "footer.php"; ?>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
@@ -129,18 +166,16 @@
   <script src="assets/js/main.js"></script>
 
   <script>
-    //options method for call datepicker
-    $(".input-group.date").datepicker({
-      autoclose: true,
-      todayHighlight: true
-    });
-  </script>
+	//options method for call datepicker
+	$(".input-group.date").datepicker({ autoclose: true, todayHighlight: true });
+	
+    </script>
 
   <script>
-    $(function () {
-      $(".select2").select2();
+     $(function () {
+    $(".select2").select2();
     });
-  </script>
+    </script>
 
 </body>
 

@@ -2,7 +2,9 @@
     include 'koneksiupload.php';
     
     $id_file = $_POST['id_file'];
+    $id_karyawan = $_POST['id_karyawan'];
     $nama = $_POST['nama'];
+    $jenis = $_POST['jenis'];
     $namafile = $_FILES['berkas']['name'];
     $x = explode('.', $namafile);
     $ekstensifile = strtolower(end($x));
@@ -18,7 +20,9 @@
 
     $dataarr = array(
         'id_file' => $id_file, 
+        'id_karyawan' => $id_karyawan, 
         'nama' => $nama,
+        'jenis' => $jenis,
         'title' => $namafile, 
         'size' => $ukuranfile, 
         'ekstensi' => $ekstensifile, 
@@ -31,7 +35,7 @@
         exit();
     } else {
         echo "Upload Gagal!";
-        header("Location: uploadfilepdf.php", true, 301);
+        header("Location: inputcv.php", true, 301);
         exit();
     }
 

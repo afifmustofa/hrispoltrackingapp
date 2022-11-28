@@ -100,6 +100,19 @@
                     </select> 
                   </div>
                 </div>
+
+                <div class="row mb-3">
+                    <label class="col-md-4 col-lg-3 col-form-label">Jenis File</label>
+                    <div class="col-md-8 col-lg-7">
+                      <select class="form-select" aria-label="Default select example" name="jenis" id="jenis" class="form-control" required="required">
+                        <option value="">----- Pilih Jenis File -----</option>
+                        <?php $jenis = $data['jenis']; ?>
+                        <option <?=($jenis=='CV')?'selected="selected"':''?>>CV</option>
+                        <option <?=($jenis=='Ijazah')?'selected="selected"':''?>>Ijazah</option>
+                        <option <?=($jenis=='KTP')?'selected="selected"':''?>>KTP</option>
+                      </select>
+                    </div>
+                  </div>
                 
                 <div class="row mb-3">
                   <label for="berkas" class="col-md-4 col-lg-3 col-form-label">File CV</label>

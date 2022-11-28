@@ -85,7 +85,7 @@
 			            }
 			          ?>
                   <!-- Default Table -->
-                <a href="karyawan_exportxls.php" class="btn btn-sm btn-success"><i class="fa fa-file"></i> Export Excel</a><td><td></td>
+                <a href="inputkeluarga.php" class="btn btn-sm btn-success"><i class="fa fa-file"></i> Input Data</a><td><td></td>
                 <table id="lookup" class="table"> 
                   <thead>
                     <tr>
@@ -113,7 +113,7 @@
                     <td class="text-center">
                       <a href="detail-keluarga.php?id=<?php echo $row['id_karyawan'] ?>" data-toggle="tooltip" title="profile-overview" class="btn btn-sm btn-success"> <i class="bi bi-search"></i> </a>
                       <a href="edit-keluarga.php?id=<?php echo $row['id_karyawan'] ?>" data-toggle="tooltip" title="profile-edit" class="btn btn-sm btn-primary"> <i class="bi bi-pencil-square"></i> </a>
-                      <a href="hapuskaryawan.php?id=<?php echo $row['id_karyawan'] ?>" onclick="return confirm(\'Anda yakin akan menghapus data?/')" class="btn btn-sm btn-danger"> <i class="bi bi-trash"></i> </a>
+                      <a href="hapuskeluarga.php?id=<?php echo $row['id_karyawan'] ?>" onclick="return confirm(\'Anda yakin akan menghapus data?/')" class="btn btn-sm btn-danger"> <i class="bi bi-trash"></i> </a>
                       </td>
                     </tr>
                     <?php } ?>
