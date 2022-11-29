@@ -113,7 +113,7 @@
                             <td><?php echo number_format($row['size']/(1024*1024), 2) ?>MB</td>
                             <td>
                             <a href="downloadpdf.php?url=<?php echo $row['berkas'] ?>" data-toggle="tooltip" title="download file" class="btn btn-sm btn-success"> <i class="bi bi-download"></i> </a>
-                            <a href="hapusfilepdf.php?id=<?php echo $row['id_karyawan'] ?>" onclick="return confirm(\'Anda yakin akan menghapus data?/')" class="btn btn-sm btn-danger"> <i class="bi bi-trash"></i>
+                            <a href="hapusfilepdf.php?id=<?php echo $row['id_file'] ?>" onclick="return confirm(\'Anda yakin akan menghapus data?/')" class="btn btn-sm btn-danger"> <i class="bi bi-trash"></i>
                             </td>
                         </tr>
             <?php 
