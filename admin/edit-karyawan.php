@@ -82,6 +82,7 @@
           $jen_kel            = $_POST['jen_kel'];
           $tanggal_lahir      = $_POST['tanggal_lahir'];
           $pendidikan         = $_POST['pendidikan'];
+          $norek              = $_POST['norek'];
           $karkel             = $_POST['karkel'];
           $npwp               = $_POST['npwp'];
           $alamat             = $_POST['alamat'];
@@ -100,7 +101,7 @@
 	      {			
 		    $gambar = $namafolder . basename($_FILES['nama_file']['name']);		
 		    if (move_uploaded_file($_FILES['nama_file']['tmp_name'], $gambar)) {
-        $sql="UPDATE tb_karyawan SET nik='$nik', nama='$nama', tanggal_masuk='$tanggal_masuk', divisi='$divisi', jabatan='$jabatan', status='$status', agama='$agama', jen_kel='$jen_kel', tanggal_lahir='$tanggal_lahir', pendidikan='$pendidikan', karkel='$karkel', npwp='$npwp', alamat='$alamat', domisili='$domisili', nohp='$nohp', email='$email', statusnikah='$statusnikah', jumlah_cuti='$jumlah_cuti',  username='$username',  password='$password',  level='$level', gambar='$gambar', posisi='$posisi' WHERE id_karyawan='$kd'";
+        $sql="UPDATE tb_karyawan SET nik='$nik', nama='$nama', tanggal_masuk='$tanggal_masuk', divisi='$divisi', jabatan='$jabatan', status='$status', agama='$agama', jen_kel='$jen_kel', tanggal_lahir='$tanggal_lahir', pendidikan='$pendidikan', norek='$norek', karkel='$karkel', npwp='$npwp', alamat='$alamat', domisili='$domisili', nohp='$nohp', email='$email', statusnikah='$statusnikah', jumlah_cuti='$jumlah_cuti',  username='$username',  password='$password',  level='$level', gambar='$gambar', posisi='$posisi' WHERE id_karyawan='$kd'";
 			  $res=mysqli_query($koneksi, $sql) or die (mysqli_error());
 			  //echo "Gambar berhasil dikirim ke direktori".$gambar;
             echo "<script>alert('Data Berhasil di Ubah'); window.location = 'datakaryawan.php'</script>";	   
@@ -249,6 +250,13 @@
                         <option <?=($pendidikan=='S1')?'selected="selected"':''?>>S1</option>  
                         <option <?=($pendidikan=='S2')?'selected="selected"':''?>>S2</option>
                       </select>
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label for="Jabatan" class="col-md-4 col-lg-3 col-form-label">No Rekening</label>
+                    <div class="col-md-4 col-lg-5">
+                      <input type="number" name="norek" id="norek" placeholder="Nomor Rekening" class="form-control" required="required">
                     </div>
                   </div>
 

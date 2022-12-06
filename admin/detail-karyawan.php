@@ -162,6 +162,11 @@
                   </div>
 
                   <div class="row">
+                    <div class="col-lg-3 col-md-4 label ">No Rekening</div>
+                    <div class="col-lg-9 col-md-8"><?php echo $data['norek']; ?></div>
+                  </div>
+
+                  <div class="row">
                     <div class="col-lg-3 col-md-4 label ">Kartu Keluarga</div>
                     <div class="col-lg-9 col-md-8"><?php echo $data['karkel']; ?></div>
                   </div>

@@ -209,6 +209,13 @@
                   </div>
 
                   <div class="row mb-3">
+                    <label for="norek" class="col-md-4 col-lg-3 col-form-label">No Rekening</label>
+                    <div class="col-md-4 col-lg-7">
+                      <input type="number" name="norek" id="norek" placeholder="No Rekening" class="form-control" required="required">
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
                     <label for="karkel" class="col-md-4 col-lg-3 col-form-label">Kartu Keluarga</label>
                     <div class="col-md-4 col-lg-7">
                       <input name="karkel" type="text" id="karkel" class="form-control" placeholder="Kartu Keluarga" autocomplete="off" required />

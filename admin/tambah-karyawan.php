@@ -17,6 +17,7 @@
               $jen_kel            = $_POST['jen_kel'];
               $tanggal_lahir      = $_POST['tanggal_lahir'];
               $pendidikan         = $_POST['pendidikan'];
+              $norek              = $_POST['norek'];
               $karkel             = $_POST['karkel'];
               $npwp               = $_POST['npwp'];
               $alamat             = $_POST['alamat'];
@@ -35,8 +36,8 @@
         {			
           $gambar = $namafolder . basename($_FILES['nama_file']['name']);		
           if (move_uploaded_file($_FILES['nama_file']['tmp_name'], $gambar)) {
-            $sql="INSERT INTO tb_karyawan (id_karyawan, nik, nama, tanggal_masuk, divisi, jabatan, status, agama, jen_kel, tanggal_lahir, pendidikan, karkel, npwp, alamat, domisili, nohp, email, statusnikah, jumlah_cuti ,username, password, level, gambar, posisi) VALUES
-                  ('$id_karyawan', '$nik','$nama','$tanggal_masuk','$divisi','$jabatan','$status', '$agama', '$jen_kel', '$tanggal_lahir', '$pendidikan', '$karkel', '$npwp', '$alamat', '$domisili', '$nohp', '$email', '$statusnikah','$jumlah_cuti','$username','$password','$level','$gambar', '$posisi')";
+            $sql="INSERT INTO tb_karyawan (id_karyawan, nik, nama, tanggal_masuk, divisi, jabatan, status, agama, jen_kel, tanggal_lahir, pendidikan, norek, karkel, npwp, alamat, domisili, nohp, email, statusnikah, jumlah_cuti ,username, password, level, gambar, posisi) VALUES
+                  ('$id_karyawan', '$nik','$nama','$tanggal_masuk','$divisi','$jabatan','$status', '$agama', '$jen_kel', '$tanggal_lahir', '$pendidikan', '$norek', '$karkel', '$npwp', '$alamat', '$domisili', '$nohp', '$email', '$statusnikah','$jumlah_cuti','$username','$password','$level','$gambar', '$posisi')";
             $res=mysqli_query($koneksi, $sql) or die (mysqli_error());
             //echo "Gambar berhasil dikirim ke direktori".$gambar;
                   echo "<script>alert('Silahkan Isi Data Anggota Keluarga!'); window.location = 'inputkeluarga.php'</script>";	   
